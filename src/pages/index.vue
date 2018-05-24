@@ -18,18 +18,14 @@ import {
 
 import layers from 'src/assets/layers'
 import POI from 'src/assets/poi'
-import Fullscreen from 'ol/control/fullscreen'
-import control from 'ol/control'
+import controls from '../assets/controls'
 export default {
   name: 'Map',
   computed: {
     ...sync('view', ['zoom', 'center'])
   },
   mounted: function () {
-    const controls = control.defaults().extend([
-          new Fullscreen()
-        ])
-    const map = new Map({
+    Vue.prototype.$map = new Map({
       layers,
       controls,
       target: 'map',
@@ -38,7 +34,6 @@ export default {
         zoom: 14
       })
     })
-    map.addControl(new Fullscreen())
   }
 }
 </script>
