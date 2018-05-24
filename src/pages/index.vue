@@ -15,39 +15,33 @@ import Vue from 'vue'
 import {
   sync
 } from 'vuex-pathify'
-import Tile from 'ol/layer/tile'
-import BingMaps from 'ol/source/bingmaps'
 
 import layers from 'src/assets/layers'
-const key = 'At70LhIzqlj9R8t_QNprh9scHr6d-6MrPeqtim9vsvKHnEJC4fJzDRsaxgSDwL0i'
-
+import POI from 'src/assets/poi'
+import Fullscreen from 'ol/control/fullscreen'
+import control from 'ol/control'
 export default {
   name: 'Map',
   computed: {
     ...sync('view', ['zoom', 'center'])
   },
   mounted: function () {
-    Vue.prototype.$map = new Map({
-      layers: [
-        new Tile({
-          source: new BingMaps({
-            key,
-            imagerySet: 'Aerial'
-          })
-        })
-      ],
+    const controls = control.defaults().extend([
+          new Fullscreen()
+        ])
+    const map = new Map({
+      layers,
+      controls,
       target: 'map',
       view: new View({
-        center: [-9101767, 2822912],
+        center: POI.Faycelles,
         zoom: 14
       })
     })
+    map.addControl(new Fullscreen())
   }
 }
 </script>
-<style scoped lang="stylus">
-ol-map
-  position fixed
-  height 100%
-  width 100%
+<style lang="stylus">
+@import "~ol/ol.css";
 </style>
