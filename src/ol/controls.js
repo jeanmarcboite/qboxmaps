@@ -4,7 +4,7 @@ import Scaleline from 'ol/control/scaleline'
 
 const controls = control.defaults().extend([
         new Fullscreen(),
-        new Scaleline()
+        new Scaleline(),
       ])
 
 export default controls

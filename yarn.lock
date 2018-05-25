@@ -4483,6 +4483,10 @@ ol-ext@^2.0.3:
     jspdf "^1.3.5"
     ol "^4.6.4"
 
+ol-geocoder@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/ol-geocoder/-/ol-geocoder-3.1.0.tgz#77ebdbfc316ae52590ff6f133f6b93382f05dbfd"
+
 ol@^4.6.4, ol@^4.6.5:
   version "4.6.5"
   resolved "https://registry.yarnpkg.com/ol/-/ol-4.6.5.tgz#3b628ffb65885f277ceb24bb0c6eee0a38727442"
