@@ -16,7 +16,7 @@ import {
   sync
 } from 'vuex-pathify'
 
-import layers from 'src/ol/layers'
+import layers from 'src/ol/layers/sources'
 import controls from 'src/ol/controls'
 import listLayers from 'src/ol/layers/list'
 export default {

@@ -1,13 +1,9 @@
 const state = {
   visible: {
-    'IGN Maps': false,
-    'IGN Photos': true,
+    'IGN Maps': true,
+    'IGN Photos': false,
   },
   tracks: {}
 }
 
-const getters = {}
-
-const mutations = {}
-
-export default {namespaced: true, state, getters, mutations}
+export default {namespaced: true, state}
