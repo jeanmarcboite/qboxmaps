@@ -11,8 +11,6 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "fs-copy-file-sync": "^1.1.1",
-    "mime": "^2.3.1",
     "ol": "^4.6.5",
     "vue-i18n": "^7.3.3",
     "vuex-pathify": "^1.0.10"
