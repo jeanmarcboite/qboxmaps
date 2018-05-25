@@ -4,6 +4,7 @@ import createLogger from 'vuex/dist/logger'
 import pathify from 'vuex-pathify'
 
 import view from './view'
+import layers from './layers'
 
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
@@ -21,7 +22,8 @@ if (debug) {
 
 const store = new Vuex.Store({
   modules: {
-    view
+    layers,
+    view,
   },
   state,
   plugins

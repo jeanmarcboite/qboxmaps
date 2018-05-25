@@ -1,4 +1,4 @@
-import POI from 'src/assets/poi'
+import POI from 'src/ol/poi'
 
 const state = {
   zoom: 16,

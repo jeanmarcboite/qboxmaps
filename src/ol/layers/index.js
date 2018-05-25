@@ -19,7 +19,7 @@ const layers = [
   new Group({
     title: 'Open Maps',
     layers: osm,
-    visible: true,
+    visible: false,
   })
 ]
 

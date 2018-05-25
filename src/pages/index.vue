@@ -16,9 +16,8 @@ import {
   sync
 } from 'vuex-pathify'
 
-import layers from 'src/assets/layers'
-import POI from 'src/assets/poi'
-import controls from '../assets/controls'
+import layers from 'src/ol/layers'
+import controls from 'src/ol/controls'
 export default {
   name: 'Map',
   computed: {
