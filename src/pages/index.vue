@@ -22,6 +22,10 @@ import store from 'src/store'
 import layers from 'src/ol/layers/sources'
 import controls from 'src/ol/controls'
 import listLayers from 'src/ol/layers/list'
+import {
+  poi
+} from 'src/ol/poi'
+
 export default {
   name: 'Map',
   computed: {
@@ -77,6 +81,19 @@ export default {
         geolocation.setTracking(false)
       })
       // geolocation.setTracking(true)
+    }
+
+    if ('geolocation' in navigator) {
+      console.log('/* geolocation is available */')
+      // One-shot position request.
+      navigator.geolocation.getCurrentPosition(function (position) {
+        console.log('Pos: ' + position.coords.longitude)
+        console.log('Pos: ' + position.coords.latitude)
+        self.$map.getView().setCenter(poi(position.coords.longitude, position.coords.latitude))
+        // self.$map.getView().setCenter(poi(1.987147, 44.565865))
+      })
+    } else {
+      console.log('/* geolocation is NOT available */')
     }
   }
 }

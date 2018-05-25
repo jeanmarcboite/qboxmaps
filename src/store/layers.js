@@ -2,7 +2,7 @@ const state = {
   visible: {
     'IGN Maps': true,
     'IGN Photos': false,
-    'OSM': false
+    'OSM': true
   },
   tracks: {}
 }

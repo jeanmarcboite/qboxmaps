@@ -1,7 +1,7 @@
 import proj from 'ol/proj'
 import projection from './projection'
 
-const poi = function(lon, lat) {
+export const poi = function(lon, lat) {
   return proj.transform([lon, lat],
     projection.dataProjection,
     projection.featureProjection)
