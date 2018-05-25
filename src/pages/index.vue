@@ -11,6 +11,7 @@
 <script>
 import Map from 'ol/map'
 import View from 'ol/view'
+import Geolocation from 'ol/geolocation'
 import Vue from 'vue'
 import {
   sync
@@ -63,6 +64,20 @@ export default {
         center: event.map.getView().getCenter()
       })
     })
+
+    if (this.geoLocate) {
+      var geolocation = new Geolocation({
+        projection: self.$map.getView().getProjection()
+      })
+
+      geolocation.on('change:position', function () {
+        var coordinates = geolocation.getPosition()
+        // self.$map.getView().setCenter(coordinates)
+        console.log(coordinates)
+        geolocation.setTracking(false)
+      })
+      // geolocation.setTracking(true)
+    }
   }
 }
 </script>
