@@ -1,8 +1,8 @@
 import POI from 'src/assets/poi'
 
 const state = {
-  zoom: 12,
-  center: POI.faycelles,
+  zoom: 16,
+  center: POI.Faycelles,
   trackColor: '#0000ff'
 }
 const actions = {

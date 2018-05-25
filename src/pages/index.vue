@@ -22,7 +22,7 @@ import controls from '../assets/controls'
 export default {
   name: 'Map',
   computed: {
-    ...sync('view', ['zoom', 'center'])
+    ...sync('view', ['zoom', 'center', 'trackColor'])
   },
   mounted: function () {
     Vue.prototype.$map = new Map({
@@ -30,8 +30,8 @@ export default {
       controls,
       target: 'map',
       view: new View({
-        center: POI.Faycelles,
-        zoom: 14
+        center: this.center,
+        zoom: this.zoom
       })
     })
   }
