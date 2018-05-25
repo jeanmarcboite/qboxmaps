@@ -1,4 +1,5 @@
 import POI from 'src/ol/poi'
+import { make } from 'vuex-pathify'
 
 const state = {
   zoom: 16,
@@ -12,7 +13,9 @@ const getters = {
   defaultColor: state => state.trackColor,
 }
 
+// mutations - helper builds all commits
 const mutations = {
+  ...make.mutations(state),
   setView(state, value) {
     state.zoom = value.zoom
     state.center = value.center
