@@ -1,6 +1,5 @@
 const state = {
   visible: {
-    'IGN Maps': true,
     'IGN Photos': false,
     'OSM': true
   },

@@ -8,7 +8,7 @@ const layers = [
   new Group({
     title: 'Bing maps',
     layers: bing,
-    visible: false,
+    visible: true,
   }),
   new Group({
     'title': 'IGN maps',
@@ -19,7 +19,7 @@ const layers = [
   new Group({
     title: 'Open Maps',
     layers: osm,
-    visible: false,
+    visible: true,
   })
 ]
 

@@ -44,7 +44,9 @@ export default {
       })
     })
     listLayers(this.$map).forEach(function (layer) {
+      console.log('"' + layer.get('title') + '"')
       layer.setVisible(self.visible[layer.get('title')])
+      console.log(self.visible[layer.get('title')])
     })
     const geocoder = new Geocoder('nominatim', {
       provider: 'osm',
