@@ -69,4 +69,6 @@ export default {
 <style lang="stylus">
 @import "~ol/ol.css";
 @import "../css/ol-geocoder.css";
+.ol-overviewmap
+  bottom: 2em
 </style>
