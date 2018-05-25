@@ -18,12 +18,15 @@ import {
 
 import layers from 'src/ol/layers'
 import controls from 'src/ol/controls'
+import listLayers from 'src/ol/layers/list'
 export default {
   name: 'Map',
   computed: {
-    ...sync('view', ['zoom', 'center', 'trackColor'])
+    ...sync('view', ['zoom', 'center', 'trackColor']),
+    ...sync('layers', ['visible'])
   },
   mounted: function () {
+    const self = this
     Vue.prototype.$map = new Map({
       layers,
       controls,
@@ -32,6 +35,9 @@ export default {
         center: this.center,
         zoom: this.zoom
       })
+    })
+    listLayers(this.$map).forEach(function (layer) {
+      layer.setVisible(self.visible[layer.get('title')])
     })
   }
 }
