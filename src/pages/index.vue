@@ -17,6 +17,7 @@ import {
   sync
 } from 'vuex-pathify'
 import Geocoder from 'ol-geocoder'
+import LayerSwitcher from 'ol-layerswitcher'
 
 import store from 'src/store'
 import layers from 'src/ol/layers/sources'
@@ -97,12 +98,18 @@ export default {
     } else {
       console.log('/* geolocation is NOT available */')
     }
+
+    const layerSwitcher = new LayerSwitcher({
+      tipLabel: 'Légende' // Optional label for button
+    })
+    this.$map.addControl(layerSwitcher)
   }
 }
 </script>
 <style lang="stylus">
 @import "~ol/ol.css";
 @import "../css/ol-geocoder.css";
+@import "~ol-layerswitcher/src/ol-layerswitcher.css";
 .ol-overviewmap
   bottom: 2em
 </style>

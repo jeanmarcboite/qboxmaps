@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "ol": "^4.6.5",
-    "ol-ext": "^2.0.3",
     "ol-geocoder": "^3.1.0",
+    "ol-layerswitcher": "^2.0.0",
     "vue-i18n": "^7.3.3",
     "vuex-pathify": "^1.0.10"
   },
