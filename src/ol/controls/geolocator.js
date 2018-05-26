@@ -9,7 +9,7 @@ import {
  * @property {string} [className='ol-geolocator'] Class name.
  * @property {Element|string} [target] Specify a target if you want the control
  * to be rendered outside of the map's viewport.
- * @property {string|Element} [label='H'] Text label to use for the button.
+ * @property {string|Element} [label='\u2316'] Text label to use for the button.
  * Instead of text, also an element (e.g. a `span` element) can be used.
  * @property {string} [tipLabel='Center map on geo location'] Text label to use for the button tip.
  */
@@ -26,7 +26,7 @@ const Geolocator = function(optOptions) {
   const options = optOptions || {}
   const className = options.className || 'ol-geolocator'
 
-  const label = options.label !== undefined ? options.label : 'H'
+  const label = options.label !== undefined ? options.label : '\u2316'
   const tipLabel = options.tipLabel !== undefined ? options.tipLabel : 'Set center to geolocation'
 
   const button = document.createElement('button')
