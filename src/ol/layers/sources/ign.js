@@ -83,6 +83,7 @@ export const ignGeo = new Tile({
 
 export const ignPhotos = new Tile({
   title: 'IGN Photos',
+  type: 'base',
   source: ignSource('ORTHOIMAGERY.ORTHOPHOTOS'),
   visible: false
 })
