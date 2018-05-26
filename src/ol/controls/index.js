@@ -4,6 +4,7 @@ import Scaleline from 'ol/control/scaleline'
 import OverviewMap from 'ol/control/overviewmap'
 import LayerSwitcher from 'ol-layerswitcher'
 import Geocoder from 'ol-geocoder'
+import Geolocator from './geolocator'
 
 const geocoder = new Geocoder('nominatim', {
       provider: 'osm',
@@ -22,7 +23,8 @@ const controls = control.defaults().extend([
         new Scaleline(),
         new OverviewMap(),
         new LayerSwitcher(),
-        geocoder
+        geocoder,
+        new Geolocator()
       ])
 
 geocoder.on('addresschosen', function (event) {

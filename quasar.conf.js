@@ -14,7 +14,7 @@ module.exports = function (ctx) {
       'material-icons',
       ctx.theme.ios ? 'ionicons' : null,
       // 'mdi',
-      // 'fontawesome'
+      'fontawesome'
     ],
     supportIE: false,
     build: {

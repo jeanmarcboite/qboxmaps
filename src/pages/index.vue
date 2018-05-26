@@ -21,9 +21,6 @@ import store from 'src/store'
 import layers from 'src/ol/layers/sources'
 import controls from 'src/ol/controls'
 import listLayers from 'src/ol/layers/list'
-import {
-  poi
-} from 'src/ol/poi'
 
 export default {
   name: 'Map',
@@ -42,6 +39,7 @@ export default {
         zoom: this.zoom
       })
     })
+    window.map = Vue.prototype.$map
     listLayers(this.$map).forEach(function (layer) {
       layer.setVisible(self.visible[layer.get('title')])
     })
@@ -65,26 +63,17 @@ export default {
       })
       // geolocation.setTracking(true)
     }
-
-    if ('geolocation' in navigator) {
-      console.log('/* geolocation is available */')
-      // One-shot position request.
-      navigator.geolocation.getCurrentPosition(function (position) {
-        console.log('Pos: ' + position.coords.longitude)
-        console.log('Pos: ' + position.coords.latitude)
-        self.$map.getView().setCenter(poi(position.coords.longitude, position.coords.latitude))
-        // self.$map.getView().setCenter(poi(1.987147, 44.565865))
-      })
-    } else {
-      console.log('/* geolocation is NOT available */')
-    }
   }
 }
 </script>
+
 <style lang="stylus">
 @import "~ol/ol.css";
 @import "../css/ol-geocoder.css";
 @import "~ol-layerswitcher/src/ol-layerswitcher.css";
 .ol-overviewmap
   bottom: 2em
+.ol-geolocator
+  top: 7em
+  left: 0.5em
 </style>
