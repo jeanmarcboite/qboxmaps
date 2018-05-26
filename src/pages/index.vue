@@ -16,7 +16,6 @@ import Vue from 'vue'
 import {
   sync
 } from 'vuex-pathify'
-import Geocoder from 'ol-geocoder'
 
 import store from 'src/store'
 import layers from 'src/ol/layers/sources'
@@ -44,25 +43,7 @@ export default {
       })
     })
     listLayers(this.$map).forEach(function (layer) {
-      console.log('"' + layer.get('title') + '"')
       layer.setVisible(self.visible[layer.get('title')])
-      console.log(self.visible[layer.get('title')])
-    })
-    const geocoder = new Geocoder('nominatim', {
-      provider: 'osm',
-      key: '__some_key__',
-      lang: 'en-US', // en-US, fr-FR
-      placeholder: 'Search for ...',
-      targetType: 'glass-button',
-      limit: 5,
-      autoComplete: true,
-      keepOpen: false,
-      preventDefault: true,
-    })
-
-    this.$map.addControl(geocoder)
-    geocoder.on('addresschosen', function (evt) {
-      self.$map.getView().setCenter(evt.coordinate)
     })
     this.$map.on('moveend', function (event) {
       store.commit('view/setView', {
