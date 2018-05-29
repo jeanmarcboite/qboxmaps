@@ -5,6 +5,7 @@ import OverviewMap from 'ol/control/overviewmap'
 import LayerSwitcher from 'ol-layerswitcher'
 import Geocoder from 'ol-geocoder'
 import Geolocator from './geolocator'
+import TrackSwitcher from './trackswitcher'
 
 const geocoder = new Geocoder('nominatim', {
       provider: 'osm',
@@ -24,7 +25,8 @@ const controls = control.defaults().extend([
         new OverviewMap(),
         new LayerSwitcher(),
         geocoder,
-        new Geolocator()
+        new Geolocator(),
+        new TrackSwitcher()
       ])
 
 geocoder.on('addresschosen', function (event) {

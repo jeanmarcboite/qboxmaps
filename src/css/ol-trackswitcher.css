@@ -1,0 +1,82 @@
+.ol-trackswitcher.shown.ol-control {
+    background-color: transparent;
+}
+
+.ol-trackswitcher.shown.ol-control:hover {
+    background-color: transparent;
+}
+
+.ol-trackswitcher {
+    position: absolute;
+    top: 8.5em;
+    left: 0.5em;
+    text-align: left;
+}
+
+.ol-trackswitcher.shown {
+    bottom: 3em;
+}
+
+.ol-trackswitcher .panel {
+    padding: 0 1em 0 0;
+    margin: 0;
+    border: 4px solid #eee;
+    border-radius: 4px;
+    background-color: white;
+    display: none;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.ol-trackswitcher.shown .panel {
+    display: block;
+}
+
+<style type="text/css">div.image {max-width: 256px;max-height: 256px;background-image: }</style>
+.ol-trackswitcher.shown button {
+    display: none;
+}
+
+.ol-trackswitcher ul {
+    padding-left: 1em;
+    list-style: none;
+}
+
+.ol-trackswitcher li.group {
+    padding-top: 5px;
+}
+
+.ol-trackswitcher li.group > label {
+    font-weight: bold;
+}
+
+.ol-trackswitcher li.layer {
+    display: table;
+}
+
+.ol-trackswitcher li.layer label, .ol-trackswitcher li.layer input {
+    display: table-cell;
+    vertical-align: sub;
+}
+
+.ol-trackswitcher label.disabled {
+    opacity:0.4;
+}
+
+.ol-trackswitcher input {
+    margin: 4px;
+}
+
+.ol-trackswitcher.touch ::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ol-trackswitcher.touch ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.ol-trackswitcher.touch ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}

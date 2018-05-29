@@ -70,10 +70,14 @@ export default {
 <style lang="stylus">
 @import "~ol/ol.css";
 @import "../css/ol-geocoder.css";
+@import "../css/ol-trackswitcher.css";
 @import "~ol-layerswitcher/src/ol-layerswitcher.css";
 .ol-overviewmap
   bottom: 2em
 .ol-geolocator
   top: 7em
+  left: 0.5em
+.ol-trackswitcher
+  top: 8.5em
   left: 0.5em
 </style>
