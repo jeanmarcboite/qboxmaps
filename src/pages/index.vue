@@ -1,6 +1,6 @@
 <template>
 <q-page class="flex flex-center">
-  <div id="map" class="ol-map" style="position: fixed; width: 100%; height: 100%;" />
+  <Map></Map>
 </q-page>
 </template>
 
@@ -9,10 +9,11 @@
 </style>
 
 <script>
-import Map from 'ol/map'
+import OlMap from 'ol/map'
 import View from 'ol/view'
 import Geolocation from 'ol/geolocation'
 import Vue from 'vue'
+import Map from '../components/Map'
 import {
   sync
 } from 'vuex-pathify'
@@ -23,14 +24,18 @@ import controls from 'src/ol/controls'
 import listLayers from 'src/ol/layers/list'
 
 export default {
-  name: 'Map',
+  name: 'App',
+  components: {
+    Map
+  },
   computed: {
     ...sync('view', ['zoom', 'center', 'trackColor']),
     ...sync('layers', ['visible'])
   },
   mounted: function () {
     const self = this
-    Vue.prototype.$map = new Map({
+    console.log('create map')
+    Vue.prototype.$map = new OlMap({
       layers,
       controls,
       target: 'map',
@@ -80,4 +85,20 @@ export default {
 .ol-trackswitcher
   top: 8.5em
   left: 0.5em
+#v
+  position: absolute
+  top: 14.5em
+  left: 1.5em
+  display: flex
+  flex-direction: column
+#qbtn
+  position: absolute
+  top: 12.5em
+  left: 1.5em
+  size: xs
+#qbtngroup
+  position: absolute
+  top: 1.5em
+  right: 25em
+
 </style>
