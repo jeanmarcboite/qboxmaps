@@ -1,6 +1,9 @@
 <template>
 <q-page class="flex flex-center">
-  <Map></Map>
+  <Map/>
+  <MapView/>
+  <MapLayers/>
+  <MapControls/>
 </q-page>
 </template>
 
@@ -10,50 +13,29 @@
 
 <script>
 import OlMap from 'ol/map'
-import View from 'ol/view'
 import Geolocation from 'ol/geolocation'
 import Vue from 'vue'
-import Map from '../components/Map'
+import Map from 'src/components/Map'
+import MapView from 'src/components/MapView'
+import MapLayers from 'src/components/MapLayers'
+import MapControls from 'src/components/MapControls'
 import {
   sync
 } from 'vuex-pathify'
 
 import store from 'src/store'
-import layers from 'src/ol/layers/sources'
-import controls from 'src/ol/controls'
-import listLayers from 'src/ol/layers/list'
 
 export default {
   name: 'App',
   components: {
-    Map
+    Map,
+    MapView,
+    MapLayers,
+    MapControls
   },
-  computed: {
-    ...sync('view', ['zoom', 'center', 'trackColor']),
-    ...sync('layers', ['visible'])
-  },
-  mounted: function () {
+  wmounted: function () {
     const self = this
-    console.log('create map')
-    Vue.prototype.$map = new OlMap({
-      layers,
-      controls,
-      target: 'map',
-      view: new View({
-        center: this.center,
-        zoom: this.zoom
-      })
-    })
     window.map = Vue.prototype.$map
-    listLayers(this.$map).forEach(function (layer) {
-      layer.setVisible(self.visible[layer.get('title')])
-    })
-    this.$map.on('moveend', function (event) {
-      store.commit('view/setView', {
-        zoom: event.map.getView().getZoom(),
-        center: event.map.getView().getCenter()
-      })
-    })
 
     if (this.geoLocate) {
       var geolocation = new Geolocation({
