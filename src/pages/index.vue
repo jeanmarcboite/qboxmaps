@@ -33,8 +33,6 @@ export default {
 @import "../css/ol-geocoder.css";
 @import "../css/ol-trackswitcher.css";
 @import "~ol-layerswitcher/src/ol-layerswitcher.css";
-.ol-overviewmap
-  bottom: 2em
 .ol-geolocator
   top: 7em
   left: 0.5em

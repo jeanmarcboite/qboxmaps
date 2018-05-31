@@ -63,6 +63,7 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='stylus'>
+.ol-overviewmap
+  bottom: 2em
 </style>
