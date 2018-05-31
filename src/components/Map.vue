@@ -7,19 +7,11 @@
 <script>
 import Vue from 'vue'
 import OlMap from 'ol/map'
-import View from 'ol/view'
-import layers from 'src/ol/layers/sources'
-import {
-  sync
-} from 'vuex-pathify'
 
 export default {
   name: 'Map',
   data() {
     return {}
-  },
-  computed: {
-    ...sync('view', ['zoom', 'center', 'trackColor']),
   },
   mounted: function () {
     console.log('create map')
@@ -27,6 +19,7 @@ export default {
       target: 'map',
     })
     Vue.prototype.$map = map
+    window.map = map
   }
 }
 </script>

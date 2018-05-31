@@ -12,18 +12,10 @@
 </style>
 
 <script>
-import OlMap from 'ol/map'
-import Geolocation from 'ol/geolocation'
-import Vue from 'vue'
 import Map from 'src/components/Map'
 import MapView from 'src/components/MapView'
 import MapLayers from 'src/components/MapLayers'
 import MapControls from 'src/components/MapControls'
-import {
-  sync
-} from 'vuex-pathify'
-
-import store from 'src/store'
 
 export default {
   name: 'App',
@@ -33,24 +25,6 @@ export default {
     MapLayers,
     MapControls
   },
-  wmounted: function () {
-    const self = this
-    window.map = Vue.prototype.$map
-
-    if (this.geoLocate) {
-      var geolocation = new Geolocation({
-        projection: self.$map.getView().getProjection()
-      })
-
-      geolocation.on('change:position', function () {
-        var coordinates = geolocation.getPosition()
-        // self.$map.getView().setCenter(coordinates)
-        console.log(coordinates)
-        geolocation.setTracking(false)
-      })
-      // geolocation.setTracking(true)
-    }
-  }
 }
 </script>
 

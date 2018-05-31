@@ -4,8 +4,15 @@
 
 <script>
 import Fullscreen from 'ol/control/fullscreen'
+import Scaleline from 'ol/control/scaleline'
+import OverviewMap from 'ol/control/overviewmap'
+import LayerSwitcher from 'ol-layerswitcher'
+import Geocoder from 'ol-geocoder'
+import Geolocator from 'src/ol/controls/geolocator'
+import TrackSwitcher from 'src/ol/controls/trackswitcher'
 import store from 'src/store'
 import listLayers from 'src/ol/layers/list'
+
 import {
   sync
 } from 'vuex-pathify'
@@ -18,8 +25,31 @@ export default {
   },
   mounted: function () {
     const self = this
+    const geocoder = new Geocoder('nominatim', {
+      provider: 'osm',
+      key: '__some_key__',
+      lang: 'en-US', // en-US, fr-FR
+      placeholder: 'Search for ...',
+      targetType: 'glass-button',
+      limit: 5,
+      autoComplete: true,
+      keepOpen: false,
+      preventDefault: true,
+    })
+    geocoder.on('addresschosen', function (event) {
+      console.dir(event)
+      event.target.map_.getView().setCenter(event.coordinate)
+    })
 
     this.$map.addControl(new Fullscreen())
+    this.$map.addControl(new Fullscreen())
+    this.$map.addControl(new Scaleline())
+    this.$map.addControl(new OverviewMap())
+    this.$map.addControl(new LayerSwitcher())
+    this.$map.addControl(geocoder)
+    this.$map.addControl(new Geolocator())
+    this.$map.addControl(new TrackSwitcher())
+
     listLayers(this.$map).forEach(function (layer) {
       layer.setVisible(self.visible[layer.get('title')])
     })
