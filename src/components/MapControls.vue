@@ -1,5 +1,7 @@
 <template>
-<div></div>
+<div>
+  <TrackSwitcher/>
+</div>
 </template>
 
 <script>
@@ -9,7 +11,7 @@ import OverviewMap from 'ol/control/overviewmap'
 import LayerSwitcher from 'ol-layerswitcher'
 import Geocoder from 'ol-geocoder'
 import Geolocator from 'src/ol/controls/geolocator'
-import TrackSwitcher from 'src/ol/controls/trackswitcher'
+import TrackSwitcher from 'src/components/TrackSwitcher'
 import store from 'src/store'
 import listLayers from 'src/ol/layers/list'
 
@@ -19,6 +21,9 @@ import {
 export default {
   data() {
     return {}
+  },
+  components: {
+    TrackSwitcher
   },
   computed: {
     ...sync('layers', ['visible'])
@@ -45,10 +50,10 @@ export default {
     this.$map.addControl(new Fullscreen())
     this.$map.addControl(new Scaleline())
     this.$map.addControl(new OverviewMap())
+    this.$map.addControl(new Geolocator())
     this.$map.addControl(new LayerSwitcher())
     this.$map.addControl(geocoder)
-    this.$map.addControl(new Geolocator())
-    this.$map.addControl(new TrackSwitcher())
+    // this.$map.addControl(new TrackSwitcher())
 
     listLayers(this.$map).forEach(function (layer) {
       layer.setVisible(self.visible[layer.get('title')])

@@ -36,9 +36,6 @@ export default {
 .ol-geolocator
   top: 7em
   left: 0.5em
-.ol-trackswitcher
-  top: 8.5em
-  left: 0.5em
 #v
   position: absolute
   top: 14.5em
