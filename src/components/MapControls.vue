@@ -1,5 +1,6 @@
 <template>
 <div>
+  <LayerSwitcher/>
   <TrackSwitcher/>
 </div>
 </template>
@@ -12,6 +13,7 @@ import OlLayerSwitcher from 'ol-layerswitcher'
 import Geocoder from 'ol-geocoder'
 import Geolocator from 'src/ol/controls/geolocator'
 import TrackSwitcher from 'src/components/TrackSwitcher'
+import LayerSwitcher from 'src/components/LayerSwitcher'
 import store from 'src/store'
 import listLayers from 'src/ol/layers/list'
 
@@ -23,6 +25,7 @@ export default {
     return {}
   },
   components: {
+    LayerSwitcher,
     TrackSwitcher
   },
   computed: {
