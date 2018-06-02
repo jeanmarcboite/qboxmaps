@@ -1,6 +1,6 @@
 <template>
 <q-layout view="lHh Lpr lFf">
-  <q-layout-drawer ref="drawer" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
+  <q-layout-drawer ref="drawer" side='right' @click="drawerClick" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
   </q-layout-drawer>
 
   <q-page-container>
@@ -10,9 +10,6 @@
 </template>
 
 <script>
-import {
-  openURL
-} from 'quasar'
 import {
   sync
 } from 'vuex-pathify'
@@ -28,11 +25,17 @@ export default {
     }
   },
   methods: {
-    openURL
+    onmouseout: function () {
+      console.log('onmouseout = this.layerSwitcherOpen = false')
+    },
+    drawerClick: function () {
+      this.layerSwitcherOpen = false
+    }
   }
 }
 </script>
 
-<style>
-
+<style lang="stylus">
+.q-layout-drawer
+  background-color: red
 </style>
