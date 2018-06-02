@@ -13,7 +13,7 @@ module.exports = function (ctx) {
       ctx.theme.mat ? 'roboto-font' : null,
       'material-icons',
       ctx.theme.ios ? 'ionicons' : null,
-      // 'mdi',
+      'mdi',
       'fontawesome'
     ],
     supportIE: false,
@@ -41,6 +41,7 @@ module.exports = function (ctx) {
     // framework: 'all' --- includes everything; for dev only!
     framework: {
       components: [
+        'QCollapsible',
         'QLayout',
         'QLayoutHeader',
         'QLayoutDrawer',
