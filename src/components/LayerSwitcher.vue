@@ -9,13 +9,16 @@ import {
 } from 'vuex-pathify'
 
 export default {
-  computed: {},
+  computed: {
+    ...sync('UI', ['layerSwitcherOpen']),
+  },
   data() {
     return {}
   },
   methods: {
     handleClick() {
-      console.log('layerSwicther')
+      console.log('layerSwitcher')
+      this.layerSwitcherOpen = !this.layerSwitcherOpen
     },
   }
 }

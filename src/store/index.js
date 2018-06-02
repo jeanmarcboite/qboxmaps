@@ -5,7 +5,7 @@ import pathify from 'vuex-pathify'
 
 import view from './view'
 import layers from './layers'
-
+import UI from './ui'
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -24,6 +24,7 @@ const store = new Vuex.Store({
   modules: {
     layers,
     view,
+    UI
   },
   state,
   plugins
