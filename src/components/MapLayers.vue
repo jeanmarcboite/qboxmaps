@@ -14,7 +14,6 @@ export default {
   },
   mounted: function () {
     this.$map.getLayers().extend(layers)
-    console.log('add layers')
     this.$map.$tracks = new Group({
       title: 'Tracks',
       visible: true,
