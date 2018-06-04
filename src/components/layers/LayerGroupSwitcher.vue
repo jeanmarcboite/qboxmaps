@@ -1,10 +1,10 @@
 <template>
-<q-collapsible>
+<q-collapsible indent icon-toggle>
   <template slot="header">
       <q-checkbox v-model="visible" :label="group.get('title')"
         checked-icon="visibility"
         unchecked-icon="visibility_off"
-        color="teal"
+        color="orange"
         @input="oninput"
       />
     </template>
