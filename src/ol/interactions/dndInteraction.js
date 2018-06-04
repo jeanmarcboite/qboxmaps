@@ -25,13 +25,15 @@ dragAndDropInteraction.on('addfeatures', function(event) {
   const vectorSource = new VectorSource({
     features: event.features
   })
-  event.target.map_.addLayer(new VectorLayer({
+  event.target.map_.$tracks.getLayers().push(new VectorLayer({
     title,
     source: vectorSource,
     style: styleFunction,
     displayInLayerSwitcher: true
   }))
   event.target.map_.getView().fit(vectorSource.getExtent())
+  console.dir(event.target.map_.$tracks.getLayers())
+  console.log(event.target.map_.$tracks.getLayers().getLength())
 })
 
 export default dragAndDropInteraction

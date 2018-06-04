@@ -1,6 +1,6 @@
 <template>
 <div>
-  <q-toggle v-model="visible" :label="layer.get('title')" checked-icon="visibility" unchecked-icon="visibility_off" color="teal"
+  <q-checkbox v-model="visible" :label="layer.get('title')" checked-icon="visibility" unchecked-icon="visibility_off" color="teal"
     @input="oninput" />
 </div>
 </template>
