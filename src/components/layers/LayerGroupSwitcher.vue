@@ -7,16 +7,25 @@
         color="teal"
         @input="oninput"
       />
-    </template> ..layerSwitcher
+    </template>
+  <LayerSwitcher v-for="(layer, key) in layers" :key="key" :layer="layer" />
 </q-collapsible>
 </template>
 
 <script>
+import LayerSwitcher from './LayerSwitcher.vue'
 export default {
+  components: {
+    LayerSwitcher
+  },
   props: [
     'group'
   ],
-  computed: {},
+  computed: {
+    layers: function () {
+      return this.group.getLayers().getArray()
+    }
+  },
   data() {
     return {
       visible: (this.group.getVisible()) ? true : false
