@@ -27,6 +27,7 @@ module.exports = {
   'rules': {
     'indent': 0,
     'no-unused-vars': 1,
+    'no-unneeded-ternary': 0,
     'space-before-function-paren': 'off',
     // allow async-await
     'generator-star-spacing': 'off',

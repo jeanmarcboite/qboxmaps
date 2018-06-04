@@ -39,9 +39,11 @@ module.exports = function (ctx) {
       open: false // opens browser window automatically
     },
     // framework: 'all' --- includes everything; for dev only!
-    framework: {
+    framework: 'all',
+    detailframework: {
       components: [
         'QCollapsible',
+        'QCheckbox',
         'QLayout',
         'QLayoutHeader',
         'QLayoutDrawer',

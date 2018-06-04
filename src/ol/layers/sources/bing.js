@@ -5,6 +5,7 @@ const key = 'At70LhIzqlj9R8t_QNprh9scHr6d-6MrPeqtim9vsvKHnEJC4fJzDRsaxgSDwL0i'
 
 export const bingRoad = new Tile({
   title: 'Bing Road',
+  subtitle: 'roads',
   baseLayer: true,
   type: 'base',
   visible: false,

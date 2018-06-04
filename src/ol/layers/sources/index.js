@@ -7,8 +7,9 @@ import osm from './osm'
 const layers = [
   new Group({
     title: 'Bing maps',
+    subtitle: '$',
     layers: bing,
-    visible: true,
+    visible: false,
   }),
   new Group({
     'title': 'IGN maps',
