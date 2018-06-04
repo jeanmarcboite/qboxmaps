@@ -24,12 +24,18 @@ export default {
   computed: {
     layers: function () {
       return this.group.getLayers().getArray()
+    },
+    visible: {
+      get: function () {
+        return this.group.getVisible()
+      },
+      set: function (visibility) {
+        this.group.setVisible(visibility)
+      }
     }
   },
   data() {
-    return {
-      visible: (this.group.getVisible()) ? true : false
-    }
+    return {}
   },
   methods: {
     oninput: function () {

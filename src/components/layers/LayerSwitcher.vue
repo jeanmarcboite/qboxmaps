@@ -11,12 +11,22 @@ export default {
   ],
   data() {
     return {
-      visible: (this.layer.getVisible()) ? true : false
+      visiblee: (this.layer.getVisible()) ? true : false
+    }
+  },
+  computed: {
+    visible: {
+      get: function () {
+        return this.layer.getVisible()
+      },
+      set: function (visibility) {
+        this.layer.setVisible(visibility)
+      }
     }
   },
   methods: {
     oninput: function () {
-      console.log('layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
+      console.log('layer: ' + this.layer.get('title') + ((this.visiblee) ? ' visible' : ''))
     }
   }
 }
