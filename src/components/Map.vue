@@ -8,6 +8,8 @@
 import Vue from 'vue'
 import OlMap from 'ol/map'
 import store from 'src/store'
+import interaction from 'ol/interaction'
+import dragAndDropInteraction from 'src/ol/interactions/dndInteraction'
 
 export default {
   name: 'Map',
@@ -23,6 +25,7 @@ export default {
     console.log('create map')
     const map = new OlMap({
       target: 'map',
+      interactions: interaction.defaults().extend([dragAndDropInteraction]),
     })
     Vue.prototype.$map = map
     window.map = map

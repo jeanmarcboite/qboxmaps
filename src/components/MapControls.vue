@@ -72,5 +72,5 @@ export default {
 
 <style lang='stylus'>
 .ol-overviewmap
-  bottom: 2em
+  bottom: 44em
 </style>
