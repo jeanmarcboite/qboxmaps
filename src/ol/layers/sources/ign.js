@@ -77,7 +77,7 @@ export const ignGeo = new Tile({
   type: 'base',
   baseLayer: true,
   source: ignSource('GEOGRAPHICALGRIDSYSTEMS.MAPS'),
-  visible: false,
+  visible: true,
   noSwitcherDelete: true
 })
 

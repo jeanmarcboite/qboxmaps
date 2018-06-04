@@ -6,6 +6,11 @@ import osm from './osm'
 
 const layers = [
   new Group({
+    title: 'Open Maps',
+    layers: osm,
+    visible: false,
+  }),
+  new Group({
     title: 'Bing maps',
     subtitle: '$',
     layers: bing,
@@ -17,11 +22,6 @@ const layers = [
     visible: true,
     openInLayerSwitcher: true
   }),
-  new Group({
-    title: 'Open Maps',
-    layers: osm,
-    visible: true,
-  })
 ]
 
 export default layers

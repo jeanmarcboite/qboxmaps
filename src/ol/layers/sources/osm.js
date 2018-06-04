@@ -5,7 +5,7 @@ const osm = new Tile({
   type: 'base',
   baseLayer: true,
   source: new OSM(),
-  visible: true,
+  visible: false,
   noSwitcherDelete: true})
 
 const osmLayers = [osm]
