@@ -9,7 +9,7 @@
 import Fullscreen from 'ol/control/fullscreen'
 import Scaleline from 'ol/control/scaleline'
 import OverviewMap from 'ol/control/overviewmap'
-import OlLayerSwitcher from 'ol-layerswitcher'
+// import OlLayerSwitcher from 'ol-layerswitcher'
 import Geocoder from 'ol-geocoder'
 import Geolocator from 'src/ol/controls/geolocator'
 import TrackSwitcher from 'src/components/TrackSwitcher'
@@ -53,7 +53,7 @@ export default {
     this.$map.addControl(new Scaleline())
     this.$map.addControl(new OverviewMap())
     this.$map.addControl(new Geolocator())
-    this.$map.addControl(new OlLayerSwitcher())
+    // this.$map.addControl(new OlLayerSwitcher())
     this.$map.addControl(geocoder)
     // this.$map.addControl(new TrackSwitcher())
 

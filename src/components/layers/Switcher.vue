@@ -1,6 +1,6 @@
 <template>
 <div class="ol-unselectable ol-control ol-layerswitcher">
-  <q-btn icon="map" push small rounded @click="handleClick" />
+  <q-btn icon="map" push small round @click="handleClick" />
   <q-layout-drawer ref="drawer" side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
     overlay>
     <q-list highlight>
@@ -43,7 +43,7 @@ export default {
 <style lang="stylus">
 .ol-layerswitcher
     position: absolute
-    top: 0.5em
-    right: 3.5em
+    top: 2.5em
+    right: 0.5em
     text-align: left
 </style>
