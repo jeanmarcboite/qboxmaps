@@ -13,13 +13,14 @@ export default {
     }
   },
   mounted: function () {
-    this.$map.getLayers().extend(layers)
     this.$map.$tracks = new Group({
       title: 'Tracks',
       visible: true,
+      layers: [],
       openInLayerSwitcher: true
     })
-    this.$map.addLayer(this.$map.$tracks)
+    layers.push(this.$map.$tracks)
+    this.$map.getLayers().extend(layers)
   }
 }
 </script>
