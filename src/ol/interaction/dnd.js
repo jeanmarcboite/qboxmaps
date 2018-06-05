@@ -6,7 +6,7 @@ import KML from 'ol/format/kml'
 import TopoJSON from 'ol/format/topojson'
 import VectorLayer from 'ol/layer/vector'
 import VectorSource from 'ol/source/vector'
-import styleFunction from 'src/ol/layers/style'
+import styleFunction from 'src/ol/layer/style'
 
 const dragAndDropInteraction = new DragAndDrop({
   formatConstructors: [

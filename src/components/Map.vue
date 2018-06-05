@@ -9,7 +9,7 @@ import Vue from 'vue'
 import OlMap from 'ol/map'
 import store from 'src/store'
 import interaction from 'ol/interaction'
-import dragAndDropInteraction from 'src/ol/interactions/dndInteraction'
+import dragAndDropInteraction from 'src/ol/interaction/dnd'
 
 export default {
   name: 'Map',

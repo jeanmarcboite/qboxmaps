@@ -4,7 +4,7 @@
 
 <script>
 import Group from 'ol/layer/group'
-import layers from 'src/ol/layers/sources'
+import layers from 'src/ol/layer/sources'
 
 export default {
   data() {

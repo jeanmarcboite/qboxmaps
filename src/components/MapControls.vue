@@ -11,11 +11,11 @@ import Scaleline from 'ol/control/scaleline'
 import OverviewMap from 'ol/control/overviewmap'
 // import OlLayerSwitcher from 'ol-layerswitcher'
 import Geocoder from 'ol-geocoder'
-import Geolocator from 'src/ol/controls/geolocator'
+import Geolocator from 'src/ol/control/geolocator'
 import TrackSwitcher from 'src/components/TrackSwitcher'
 import LayerSwitcher from 'src/components/layer/Switcher'
 import store from 'src/store'
-import listLayers from 'src/ol/layers/list'
+import listLayers from 'src/ol/layer/list'
 
 import {
   sync
