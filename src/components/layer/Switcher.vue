@@ -3,8 +3,8 @@
   <q-btn icon="map" push small round @click="handleClick" />
   <q-layout-drawer ref="drawer" side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
     overlay>
-    <q-list highlight>
-      <LayerGroupSwitcher v-for="(group, key) in groups()" :key="key" :group="group" />
+    <q-list highlight v-if="layerSwitcherOpen && $map">
+      <LayerGroupSwitcher v-for="(group, key) in groups()" :key="key" :group.sync="group" />
     </q-list>
   </q-layout-drawer>
 </div>
@@ -23,14 +23,15 @@ export default {
   },
   computed: {
     ...sync('UI', ['layerSwitcherOpen']),
-    groupsc: function () {
-      console.log('get groups' + ((this.$map) ? '' : ' [no map]'))
-      return (this.$map) ? this.$map.getLayers().getArray() : []
+    groupToList: function () {
+      return (this.layerSwitcherOpen && this.$map)
     }
+  },
+  updated: function () {
+    console.log('switcher updated')
   },
   methods: {
     groups() {
-      console.log('get groups()' + ((this.$map) ? '' : ' [no map]'))
       return (this.$map) ? this.$map.getLayers().getArray() : []
     },
     handleClick() {

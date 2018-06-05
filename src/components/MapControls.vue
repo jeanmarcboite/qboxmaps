@@ -13,7 +13,7 @@ import OverviewMap from 'ol/control/overviewmap'
 import Geocoder from 'ol-geocoder'
 import Geolocator from 'src/ol/controls/geolocator'
 import TrackSwitcher from 'src/components/TrackSwitcher'
-import LayerSwitcher from 'src/components/layers/Switcher'
+import LayerSwitcher from 'src/components/layer/Switcher'
 import store from 'src/store'
 import listLayers from 'src/ol/layers/list'
 

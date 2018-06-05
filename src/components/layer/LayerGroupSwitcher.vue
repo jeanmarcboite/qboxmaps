@@ -8,7 +8,9 @@
         @input="oninput"
       />
     </template>
-  <LayerSwitcher v-for="(layer, key) in layers" :key="key" :layer="layer" />
+  <q-list highlight>
+    <LayerSwitcher v-for="(layer, key) in layers" :ref="key" :key="key" :layer.sync="layer" />
+  </q-list>
 </q-collapsible>
 </template>
 
@@ -30,6 +32,7 @@ export default {
         return this.group.getVisible()
       },
       set: function (visibility) {
+        console.log('set ' + this.group.get('title') + ' visibility ' + visibility)
         this.group.setVisible(visibility)
       }
     }

@@ -22,7 +22,6 @@ export default {
     }
   },
   mounted: function () {
-    console.log('create map')
     const map = new OlMap({
       target: 'map',
       interactions: interaction.defaults().extend([dragAndDropInteraction]),

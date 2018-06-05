@@ -10,9 +10,7 @@ export default {
     'layer'
   ],
   data() {
-    return {
-      visiblee: (this.layer.getVisible()) ? true : false
-    }
+    return {}
   },
   computed: {
     visible: {
@@ -20,13 +18,15 @@ export default {
         return this.layer.getVisible()
       },
       set: function (visibility) {
+        console.log('set ' + this.layer.get('title') + ' visibility ' + visibility)
         this.layer.setVisible(visibility)
+        console.log('layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
       }
     }
   },
   methods: {
     oninput: function () {
-      console.log('layer: ' + this.layer.get('title') + ((this.visiblee) ? ' visible' : ''))
+      console.log('oninput, layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
     }
   }
 }
