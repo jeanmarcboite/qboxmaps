@@ -1,8 +1,7 @@
 <template>
 <div class="ol-unselectable ol-control ol-layerswitcher">
   <q-btn icon="map" push small round @click="handleClick" />
-  <q-layout-drawer ref="drawer" side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null"
-    overlay>
+  <q-layout-drawer side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
     <q-list highlight v-if="layerSwitcherOpen && $map">
       <LayerGroupSwitcher v-for="(group, key) in groups()" :key="key" :group.sync="group" />
     </q-list>
@@ -23,12 +22,6 @@ export default {
   },
   computed: {
     ...sync('UI', ['layerSwitcherOpen']),
-    groupToList: function () {
-      return (this.layerSwitcherOpen && this.$map)
-    }
-  },
-  updated: function () {
-    console.log('switcher updated')
   },
   methods: {
     groups() {
