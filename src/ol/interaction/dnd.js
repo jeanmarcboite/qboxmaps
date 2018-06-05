@@ -32,8 +32,6 @@ dragAndDropInteraction.on('addfeatures', function(event) {
     displayInLayerSwitcher: true
   }))
   event.target.map_.getView().fit(vectorSource.getExtent())
-  console.dir(event.target.map_.$tracks.getLayers())
-  console.log(event.target.map_.$tracks.getLayers().getLength())
 })
 
 export default dragAndDropInteraction
