@@ -1,5 +1,5 @@
 <template>
-<q-item @input="oninput">
+<q-item>
   <q-item-side>
     <q-checkbox v-model="visible" checked-icon="visibility" unchecked-icon="visibility_off" color="teal" />
   </q-item-side>
@@ -15,7 +15,7 @@
     </q-list>
   </q-context-menu>
   <q-item-main>
-    <q-item-tile @input="oninput">
+    <q-item-tile ref="layerTitle">
       {{layer.get('title')}}
     </q-item-tile>
   </q-item-main>
@@ -41,8 +41,15 @@ export default {
       }
     }
   },
+  mounted: function () {
+    const layer = this.layer
+
+    this.$refs.layerTitle.$el.addEventListener('click', function () {
+      console.log('click, layer: ' + layer.get('title'))
+    })
+  },
   methods: {
-    oninput: function () {
+    onclick: function () {
       console.log('oninput, layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
     }
   }
