@@ -35,9 +35,9 @@ export default {
         return this.layer.getVisible()
       },
       set: function (visibility) {
-        console.log('set ' + this.layer.get('title') + ' visibility ' + visibility)
+        // console.log('set ' + this.layer.get('title') + ' visibility ' + visibility)
         this.layer.setVisible(visibility)
-        console.log('layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
+        // console.log('layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
       }
     }
   },
