@@ -4,7 +4,7 @@
     <q-checkbox v-model="visible" checked-icon="visibility" unchecked-icon="visibility_off" color="teal" />
   </q-item-side>
   <q-context-menu>
-    <q-color-picker color="amber-7" float-label="Float Label" v-model="color" @input="colorInput" />
+    <q-color-picker v-model="color" @input="colorInput" />
     <q-list link separator style="min-width: 150px; max-height: 300px;">
       <q-item v-close-overlay>
         <q-item-main label="Label" sublabel="Value" />
@@ -23,8 +23,6 @@
 </q-item>
 </template>
 <script>
-import Stroke from 'ol/style/stroke'
-import Style from 'ol/style/style'
 export default {
   props: [
     'layer'
@@ -56,18 +54,7 @@ export default {
   },
   methods: {
     colorInput: function (color) {
-      console.log(color)
-      console.log(this.color)
-      this.layer.color = color
-      if (color !== '#000000') {
-        const style = new Style({
-          stroke: new Stroke({
-            color,
-            width: 4
-          })
-        })
-        this.layer.setStyle(style)
-      }
+      this.layer.setColor(color)
     }
   }
 }
