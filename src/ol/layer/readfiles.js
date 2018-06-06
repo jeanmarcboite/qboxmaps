@@ -1,6 +1,5 @@
 import GPX from 'ol/format/gpx'
 import VectorSource from 'ol/source/vector'
-import style from './style'
 import store from 'src/store'
 
 import TrackLayer from 'src/ol/layer/Track'
@@ -9,7 +8,7 @@ const readFeatures = function(event, options) {
   const format = new GPX()
   const features = format.readFeatures(event.target.result, projection)
   const source = new VectorSource({features})
-  options.map.$tracks.getLayers().push(new TrackLayer({title: options.title, source, style}))
+  options.map.$tracks.getLayers().push(new TrackLayer({title: options.title, source}))
   if (options.fit) {
     options.map.getView().fit(source.getExtent())
   }

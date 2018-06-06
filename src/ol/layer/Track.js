@@ -2,13 +2,14 @@ import ol from 'ol'
 import VectorLayer from 'ol/layer/vector'
 import Stroke from 'ol/style/stroke'
 import Style from 'ol/style/style'
+import style from './style'
 
 export function TrackLayer(optOptions) {
   if (process.env.NODE_ENV !== 'production' && !(this instanceof TrackLayer)) {
     console.warn('Toolbar is a constructor and should be called with the `new` keyword')
   }
 
-  const options = Object.assign({}, optOptions)
+  const options = Object.assign({ style }, optOptions)
 
   VectorLayer.call(this, options)
 
