@@ -1,5 +1,5 @@
 <template>
-<div id="map" class="ol-map" @onclick="onclick">
+<div id="map" class="ol-map">
   <slot/>
 </div>
 </template>
@@ -21,9 +21,7 @@ export default {
   computed: {
     ...sync('UI', ['layerSwitcherOpen']),
   },
-  methods: {
-    onclick: function () {}
-  },
+  methods: {},
   mounted: function () {
     const self = this
     const map = new OlMap({
