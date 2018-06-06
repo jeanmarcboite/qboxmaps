@@ -2,12 +2,13 @@ import ol from 'ol'
 import VectorLayer from 'ol/layer/vector'
 import Stroke from 'ol/style/stroke'
 import Style from 'ol/style/style'
+import store from 'src/store'
 
 export function TrackLayer(optOptions) {
   if (process.env.NODE_ENV !== 'production' && !(this instanceof TrackLayer)) {
     console.warn('TrackLayer is a constructor and should be called with the `new` keyword')
   }
-  this.color = optOptions.color || '#000000'
+  this.color = optOptions.color || store.state.tracks.defaultColor
 
   const options = Object.assign({
     style: new Style({

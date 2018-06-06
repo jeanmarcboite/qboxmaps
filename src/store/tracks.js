@@ -5,13 +5,15 @@ import GeoJSON from 'ol/format/geojson'
 import { make } from 'vuex-pathify'
 
 const state = {
+  defaultColor: '#ff0000',
+  tracks: {}
 }
 
 function storeFeatures(state, layer) {
   const writer = new GeoJSON()
   const features = writer.writeFeatures(layer.getSource().getFeatures(), projection)
 
-  state[layer.get('title')] = {features, color: layer.color}
+  state.tracks[layer.get('title')] = {features, color: layer.color}
 }
 
 function storeLayer(state, layer) {
@@ -32,14 +34,19 @@ function storeLayers(state, map) {
 const mutations = {
   ...make.mutations(state),
   store(state, map) {
-    const newState = {}
+    const newState = Object.assign({tracks: {}}, state)
     storeLayers(newState, map)
     Object.assign(state, newState)
   }
 }
 
+const getters = {
+  defaultColor: state => state.defaultColor
+}
+
 export default {
   namespaced: true,
   state,
-  mutations
+  mutations,
+  getters
 }

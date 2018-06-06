@@ -26,7 +26,7 @@ export default {
     })
     layers.push(this.$map.$tracks)
     this.$map.getLayers().extend(layers)
-    addTracks(this.$map, this.$store.state.tracks)
+    addTracks(this.$map, this.$store.state.tracks.tracks)
   }
 }
 </script>
