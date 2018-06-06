@@ -6,6 +6,7 @@ import { make } from 'vuex-pathify'
 
 const state = {
   defaultColor: '#ff0000',
+  defaultWidth: 4,
   tracks: {}
 }
 
@@ -13,7 +14,7 @@ function storeFeatures(state, layer) {
   const writer = new GeoJSON()
   const features = writer.writeFeatures(layer.getSource().getFeatures(), projection)
 
-  state.tracks[layer.get('title')] = {features, color: layer.color}
+  state.tracks[layer.get('title')] = {features, color: layer.color, width: layer.width}
 }
 
 function storeLayer(state, layer) {
@@ -40,13 +41,8 @@ const mutations = {
   }
 }
 
-const getters = {
-  defaultColor: state => state.defaultColor
-}
-
 export default {
   namespaced: true,
   state,
   mutations,
-  getters
 }

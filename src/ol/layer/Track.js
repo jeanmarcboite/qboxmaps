@@ -9,10 +9,11 @@ export function TrackLayer(optOptions) {
     console.warn('TrackLayer is a constructor and should be called with the `new` keyword')
   }
   this.color = optOptions.color || store.state.tracks.defaultColor
+  this.width = optOptions.width || store.state.tracks.defaultWidth
 
   const options = Object.assign({
     style: new Style({
-      stroke: new Stroke({color: this.color, width: 4})
+      stroke: new Stroke({color: this.color, width: this.width})
     })
   }, optOptions)
 
@@ -31,7 +32,7 @@ TrackLayer.prototype.setColor = function(color) {
   this.color = color
   console.log('set color of ', this.getName(), ' to ', color)
   const style = new Style({
-    stroke: new Stroke({color, width: 4})
+    stroke: new Stroke({color, width: this.width})
   })
   this.setStyle(style)
 }
