@@ -15,7 +15,8 @@
     "ol-geocoder": "^3.1.0",
     "ol-layerswitcher": "^2.0.0",
     "vue-i18n": "^7.3.3",
-    "vuex-pathify": "^1.0.10"
+    "vuex-pathify": "^1.0.10",
+    "vuex-persist": "^1.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
