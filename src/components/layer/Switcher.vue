@@ -1,6 +1,8 @@
 <template>
 <div class="ol-unselectable ol-control ol-layerswitcher">
-  <q-btn icon="map" push small round @click="handleClick" />
+  <q-btn push small round @click="handleClick">
+    <q-icon name="layers" style="font-size: 1em;" />
+  </q-btn>
   <q-layout-drawer side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
     <q-list highlight v-if="layerSwitcherOpen && $map">
       <LayerGroupSwitcher v-for="(group, key) in groups()" :key="key" :group.sync="group" />

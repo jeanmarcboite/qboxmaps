@@ -1,12 +1,9 @@
 import GPX from 'ol/format/gpx'
 import VectorSource from 'ol/source/vector'
 import style from './style'
-import Point from 'ol/geom/point'
-import Feature from 'ol/feature'
 
 import TrackLayer from 'src/ol/layer/Track'
-import projection from 'src/assets/projection'
-
+import projection from 'src/ol/projection'
 const readFeatures = function(event, options) {
   const format = new GPX()
   const features = format.readFeatures(event.target.result, projection)
@@ -32,32 +29,5 @@ const readFeaturesFiles = function(event, options) {
   }
 }
 const readFiles = (options) => (event) => readFeaturesFiles(event, options)
-
-const setProfile = function(map, source) {
-  if (source.getState() === 'ready') {
-    map.profil.setGeometry(source.getFeatures()[0], {
-      graduation: 250,
-      amplitude: 1000,
-      zmin: 0
-    })
-    const pt = new Feature(new Point([0, 0]))
-    pt.setStyle([])
-    source.addFeature(pt)
-
-    map.profil.on([
-      'over', 'out'
-    ], function(e) {
-      if (pt) {
-        if (e.type === 'over') {
-          pt.setGeometry(new Point(e.coord))
-          pt.setStyle(null)
-        } else {
-          // hide point
-          pt.setStyle([])
-        }
-      }
-    })
-  }
-}
 
 export default readFiles
