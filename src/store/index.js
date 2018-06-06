@@ -7,6 +7,7 @@ import pathify from 'vuex-pathify'
 import view from './view'
 import layers from './layers'
 import UI from './ui'
+import tracks from './tracks'
 
 const vuexStorage = new VuexPersist({
   key: 'maps-vuex', // The key to store the state on in the storage provider.
@@ -33,10 +34,12 @@ const plugins = [
 ]
 if (debug) {
   plugins.push(createLogger())
+  // pathify.debug()
 }
 
 const store = new Vuex.Store({
   modules: {
+    tracks,
     layers,
     view,
     UI

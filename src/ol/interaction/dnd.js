@@ -4,9 +4,10 @@ import GeoJSON from 'ol/format/geojson'
 import IGC from 'ol/format/igc'
 import KML from 'ol/format/kml'
 import TopoJSON from 'ol/format/topojson'
-import VectorLayer from 'ol/layer/vector'
+import TrackLayer from 'src/ol/layer/Track'
 import VectorSource from 'ol/source/vector'
 import styleFunction from 'src/ol/layer/style'
+import store from 'src/store'
 
 const dragAndDropInteraction = new DragAndDrop({
   formatConstructors: [
@@ -18,6 +19,7 @@ const dragAndDropInteraction = new DragAndDrop({
   ]
 })
 dragAndDropInteraction.on('addfeatures', function(event) {
+  const map = event.target.map_
   var title = 'new layer'
   if (event.file) {
     title = event.file.name
@@ -25,13 +27,15 @@ dragAndDropInteraction.on('addfeatures', function(event) {
   const vectorSource = new VectorSource({
     features: event.features
   })
-  event.target.map_.$tracks.getLayers().push(new VectorLayer({
+  map.$tracks.getLayers().push(new TrackLayer({
     title,
     source: vectorSource,
     style: styleFunction,
     displayInLayerSwitcher: true
   }))
-  event.target.map_.getView().fit(vectorSource.getExtent())
+  map.getView().fit(vectorSource.getExtent())
+
+  store.commit('tracks/addTrack', map)
 })
 
 export default dragAndDropInteraction

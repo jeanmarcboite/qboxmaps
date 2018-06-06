@@ -7,7 +7,7 @@
 import Group from 'ol/layer/group'
 import layers from 'src/ol/layer/sources'
 import TrackLoader from './layer/TrackLoader'
-
+import addTracks from 'src/ol/layer/addtracks'
 export default {
   components: {
     TrackLoader
@@ -26,6 +26,7 @@ export default {
     })
     layers.push(this.$map.$tracks)
     this.$map.getLayers().extend(layers)
+    addTracks(this.$map, this.$store.state.tracks)
   }
 }
 </script>
