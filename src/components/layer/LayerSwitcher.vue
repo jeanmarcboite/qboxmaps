@@ -43,15 +43,13 @@ export default {
   },
   mounted: function () {
     const layer = this.layer
+    const map = this.$map
 
     this.$refs.layerTitle.$el.addEventListener('click', function () {
       console.log('click, layer: ' + layer.get('title'))
+      map.getView().fit(layer.extent)
     })
   },
-  methods: {
-    onclick: function () {
-      console.log('oninput, layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
-    }
-  }
+  methods: {}
 }
 </script>
