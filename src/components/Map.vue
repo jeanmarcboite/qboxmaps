@@ -17,9 +17,7 @@ export default {
     return {}
   },
   methods: {
-    onclick: function () {
-      console.log('click map')
-    }
+    onclick: function () {}
   },
   mounted: function () {
     const map = new OlMap({

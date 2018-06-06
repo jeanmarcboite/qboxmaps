@@ -15,7 +15,6 @@ export default {
     return {}
   },
   mounted: function () {
-    console.log('setView')
     this.$map.getView().setCenter(this.center)
     this.$map.getView().setZoom(this.zoom)
   }

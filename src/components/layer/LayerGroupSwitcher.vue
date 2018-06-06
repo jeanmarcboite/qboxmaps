@@ -32,7 +32,6 @@ export default {
         return this.group.getVisible()
       },
       set: function (visibility) {
-        console.log('set ' + this.group.get('title') + ' visibility ' + visibility)
         this.group.setVisible(visibility)
       }
     }
@@ -41,9 +40,7 @@ export default {
     return {}
   },
   methods: {
-    oninput: function () {
-      console.log('group: ' + this.group.get('title') + ((this.visible) ? ' visible' : ''))
-    },
+    oninput: function () {},
   }
 }
 </script>

@@ -9,7 +9,6 @@ const listLayer = function(layer, layers) {
   if (layer instanceof Group) {
     listLayers_(layer, layers)
   } else if (layer instanceof Tile) {
-    // console.log(layer.get('title') + ' ' + layer.getVisible())
     layers.push(layer)
   }
 }
