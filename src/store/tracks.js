@@ -10,7 +10,8 @@ const state = {
 function storeFeatures(state, layer) {
   const writer = new GeoJSON()
   const features = writer.writeFeatures(layer.getSource().getFeatures(), projection)
-  state[layer.get('title')] = features
+
+  state[layer.get('title')] = {features, color: layer.color}
 }
 
 function storeLayer(state, layer) {
@@ -30,7 +31,7 @@ function storeLayers(state, map) {
 
 const mutations = {
   ...make.mutations(state),
-  addTrack(state, map) {
+  store(state, map) {
     const newState = {}
     storeLayers(newState, map)
     Object.assign(state, newState)

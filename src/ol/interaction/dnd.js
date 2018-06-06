@@ -35,7 +35,7 @@ dragAndDropInteraction.on('addfeatures', function(event) {
   }))
   map.getView().fit(vectorSource.getExtent())
 
-  store.commit('tracks/addTrack', map)
+  store.commit('tracks/store', map)
 })
 
 export default dragAndDropInteraction

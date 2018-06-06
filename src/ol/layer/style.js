@@ -40,7 +40,7 @@ export const defaultStyle = {
     })
   }),
   'LineString': new Style({
-    stroke: new Stroke({color: '#f00', width: 3})
+    stroke: new Stroke({color: '#0ff', width: 3})
   }),
   'Polygon': new Style({
     fill: new Fill({color: 'rgba(0,255,255,0.5)'}),
@@ -54,7 +54,7 @@ export const defaultStyle = {
     })
   }),
   'MultiLineString': new Style({
-    stroke: new Stroke({color: defaultColor, width: 3})
+    stroke: new Stroke({color: defaultColor, width: 7})
   }),
   'MultiPolygon': new Style({
     fill: new Fill({color: 'rgba(0,0,255,0.5)'}),
@@ -63,10 +63,15 @@ export const defaultStyle = {
 }
 
 const styleFunction = function(feature, resolution) {
+  console.error('styleFunction')
+  console.log(feature)
+  console.log(resolution)
   const featureStyleFunction = feature.getStyleFunction()
   if (featureStyleFunction) {
+    console.log('call featureStyleFunction')
     return featureStyleFunction.call(feature, resolution)
   } else {
+    console.log('call default style for ', feature.getGeometry().getType())
     return defaultStyle[feature.getGeometry().getType()]
   }
 }

@@ -55,6 +55,7 @@ export default {
   methods: {
     colorInput: function (color) {
       this.layer.setColor(color)
+      this.$store.commit('tracks/store', this.$map)
     }
   }
 }
