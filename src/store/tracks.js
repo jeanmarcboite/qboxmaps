@@ -22,7 +22,6 @@ function storeLayer(state, layer) {
     storeLayers(state, layer)
   } else {
     if (layer instanceof VectorLayer) {
-      console.log('storeFeatures of ' + layer.getName())
       storeFeatures(state, layer)
     }
   }

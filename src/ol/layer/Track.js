@@ -37,4 +37,12 @@ TrackLayer.prototype.setColor = function(color) {
   this.setStyle(style)
 }
 
+TrackLayer.prototype.setWidth = function(width) {
+  this.width = width
+  const style = new Style({
+    stroke: new Stroke({color: this.color, width: this.width})
+  })
+  this.setStyle(style)
+}
+
 export default TrackLayer

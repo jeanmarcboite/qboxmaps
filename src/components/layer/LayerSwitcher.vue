@@ -5,6 +5,7 @@
   </q-item-side>
   <q-context-menu>
     <q-color-picker v-model="color" @input="colorInput" />
+    <q-slider v-model="width" :min="1" :max="10" :step="1" label snap @input="widthInput" />
   </q-context-menu>
   <q-item-main>
     <q-item-tile ref="layerTitle">
@@ -20,7 +21,8 @@ export default {
   ],
   data() {
     return {
-      color: 'amber'
+      color: 'amber',
+      width: 5
     }
   },
   computed: {
@@ -46,6 +48,11 @@ export default {
   methods: {
     colorInput: function (color) {
       this.layer.setColor(color)
+      this.$store.commit('tracks/store', this.$map)
+    },
+    widthInput: function (width) {
+      console.log('setWidth')
+      this.layer.setWidth(width)
       this.$store.commit('tracks/store', this.$map)
     }
   }
