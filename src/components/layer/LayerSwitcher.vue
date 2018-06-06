@@ -46,7 +46,6 @@ export default {
     const map = this.$map
 
     this.$refs.layerTitle.$el.addEventListener('click', function () {
-      console.log('click, layer: ' + layer.get('title'))
       map.getView().fit(layer.extent)
     })
   },
