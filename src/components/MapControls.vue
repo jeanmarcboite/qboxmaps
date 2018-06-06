@@ -74,6 +74,8 @@ export default {
 </script>
 
 <style lang='stylus'>
-.ol-overviewmap
-  bottom: 44em
+.ol-scale-line
+  position: absolute
+  bottom: 4.5em
+  left: 7.5em
 </style>

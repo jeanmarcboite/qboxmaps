@@ -36,6 +36,8 @@ export default {
 .ol-geolocator
   top: 7em
   left: 0.5em
+.ol-scale-line
+  left: 2.5em
 #v
   position: absolute
   top: 14.5em
