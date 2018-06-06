@@ -5,15 +5,6 @@
   </q-item-side>
   <q-context-menu>
     <q-color-picker v-model="color" @input="colorInput" />
-    <q-list link separator style="min-width: 150px; max-height: 300px;">
-      <q-item v-close-overlay>
-        <q-item-main label="Label" sublabel="Value" />
-      </q-item>
-
-      <q-item v-close-overlay>
-        <q-item-main label="Other Label" sublabel="Other Value" />
-      </q-item>
-    </q-list>
   </q-context-menu>
   <q-item-main>
     <q-item-tile ref="layerTitle">
