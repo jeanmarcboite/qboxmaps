@@ -51,7 +51,6 @@ export default {
       this.$store.commit('tracks/store', this.$map)
     },
     widthInput: function (width) {
-      console.log('setWidth')
       this.layer.setWidth(width)
       this.$store.commit('tracks/store', this.$map)
     }
