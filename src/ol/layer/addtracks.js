@@ -7,7 +7,12 @@ const addLayer = function (options) {
   const format = new GeoJSON()
   const features = format.readFeatures(options.track.features, projection)
   const source = new VectorSource({features})
-  const track = new TrackLayer({title: options.title, source, color: options.track.color})
+  const track = new TrackLayer({
+    title: options.title,
+    source,
+    color: options.track.color,
+    width: options.track.width,
+  })
   options.map.$tracks.getLayers().push(track)
 }
 
