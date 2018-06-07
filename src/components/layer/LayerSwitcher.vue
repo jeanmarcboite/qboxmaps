@@ -1,59 +1,45 @@
 <template>
-<q-item>
-  <q-item-side>
-    <q-checkbox v-model="visible" checked-icon="visibility" unchecked-icon="visibility_off" color="teal" />
-  </q-item-side>
-  <q-context-menu>
-    <q-color-picker v-model="color" @input="colorInput" />
-    <q-slider v-model="width" :min="1" :max="10" :step="1" label snap @input="widthInput" />
-  </q-context-menu>
-  <q-item-main>
-    <q-item-tile ref="layerTitle">
-      {{layer.get('title')}}
-    </q-item-tile>
-  </q-item-main>
-</q-item>
+<div class="ol-unselectable ol-control ol-layerswitcher">
+  <q-btn push small round @click="handleClick">
+    <q-icon name="layers" style="font-size: 1em;" />
+  </q-btn>
+  <q-layout-drawer side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
+    <q-list highlight v-if="layerSwitcherOpen && $map">
+      <LayerGroup v-for="(group, key) in groups()" v-if="group.get('mapLayer')" :key="key" :group="group" />
+    </q-list>
+  </q-layout-drawer>
+</div>
 </template>
+
 <script>
+import {
+  sync
+} from 'vuex-pathify'
+
+import LayerGroup from './LayerGroup.vue'
+
 export default {
-  props: [
-    'layer'
-  ],
-  data() {
-    return {
-      color: 'amber',
-      width: 5
-    }
+  components: {
+    LayerGroup
   },
   computed: {
-    visible: {
-      get: function () {
-        return this.layer.getVisible()
-      },
-      set: function (visibility) {
-        // console.log('set ' + this.layer.get('title') + ' visibility ' + visibility)
-        this.layer.setVisible(visibility)
-        // console.log('layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
-      }
-    }
-  },
-  mounted: function () {
-    const layer = this.layer
-    const map = this.$map
-
-    this.$refs.layerTitle.$el.addEventListener('click', function () {
-      map.getView().fit(layer.extent)
-    })
+    ...sync('UI', ['layerSwitcherOpen']),
   },
   methods: {
-    colorInput: function (color) {
-      this.layer.setColor(color)
-      this.$store.commit('tracks/store', this.$map)
+    groups() {
+      return (this.$map) ? this.$map.getLayers().getArray() : []
     },
-    widthInput: function (width) {
-      this.layer.setWidth(width)
-      this.$store.commit('tracks/store', this.$map)
+    handleClick() {
+      this.layerSwitcherOpen = !this.layerSwitcherOpen
     }
   }
 }
 </script>
+
+<style lang="stylus">
+.ol-layerswitcher
+    position: absolute
+    top: 2.5em
+    right: 0.5em
+    text-align: left
+</style>

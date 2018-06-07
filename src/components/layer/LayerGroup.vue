@@ -9,16 +9,16 @@
       />
     </template>
   <q-list highlight inset-separator>
-    <LayerSwitcher v-for="(layer, key) in layers" :ref="key" :key="key" :layer.sync="layer" />
+    <Layer v-for="(layer, key) in layers" :ref="key" :key="key" :layer.sync="layer" />
   </q-list>
 </q-collapsible>
 </template>
 
 <script>
-import LayerSwitcher from './LayerSwitcher.vue'
+import Layer from './Layer.vue'
 export default {
   components: {
-    LayerSwitcher
+    Layer
   },
   props: [
     'group'
