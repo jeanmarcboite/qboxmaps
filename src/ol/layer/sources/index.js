@@ -9,13 +9,14 @@ const layers = [
     title: 'Open Maps',
     layers: osm,
     visible: false,
-    mapLayer: true
+    type: 'map'
   }),
   new Group({
     title: 'Bing maps',
     subtitle: '$',
     layers: bing,
     visible: false,
+    type: 'map',
     mapLayer: true
   }),
   new Group({
@@ -23,6 +24,7 @@ const layers = [
     layers: ign,
     visible: true,
     openInLayerSwitcher: true,
+    type: 'map',
     mapLayer: true
   }),
 ]

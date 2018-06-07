@@ -22,7 +22,7 @@ export default {
       title: 'Tracks',
       visible: true,
       layers: [],
-      trackLayer: true,
+      type: 'track',
       openInLayerSwitcher: true
     })
     layers.push(this.$map.$tracks)

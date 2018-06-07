@@ -5,7 +5,7 @@
   </q-btn>
   <q-layout-drawer side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
     <q-list highlight v-if="layerSwitcherOpen && $map">
-      <MapLayerGroup v-for="(group, key) in groups()" v-if="group.get('mapLayer')" :key="key" :group="group" />
+      <MapLayerGroup v-for="(group, key) in groups()" v-if="group.get('type') == 'map'" :key="key" :group="group" />
     </q-list>
   </q-layout-drawer>
 </div>

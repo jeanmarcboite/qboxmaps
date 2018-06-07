@@ -2,18 +2,13 @@
 <div class="ol-unselectable ol-control ol-trackswitcher">
   <q-context-menu>
     <q-list highlight>
-      <LayerGroup v-for="(group, key) in groups()" v-if="group.get('trackLayer')" :key="key" :group="group" />
+      <LayerGroup v-for="(group, key) in groups()" v-if="group.get('type') == 'track'" :key="key" :group="group" />
     </q-list>
   </q-context-menu>
   <input type="file" :id="id" accept=".gpx" multiple style="display: none;" />
   <q-btn push small round @click="handleClick">
     <q-icon name="directions_walk" style="font-size: 1em;" />
   </q-btn>
-  <q-layout-drawer side="right" v-model="trackSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
-    <q-list highlight v-if="trackSwitcherOpen && $map">
-      <LayerGroup v-for="(group, key) in groups()" v-if="group.get('trackLayer')" :key="key" :group="group" />
-    </q-list>
-  </q-layout-drawer>
 </div>
 </template>
 
