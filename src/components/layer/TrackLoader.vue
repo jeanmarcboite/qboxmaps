@@ -36,6 +36,6 @@ export default {
 <style lang="stylus">
 .ol-trackloader
     position: absolute
-    top: 4.5em
+    top: 7.5em
     right: 0.5em
 </style>

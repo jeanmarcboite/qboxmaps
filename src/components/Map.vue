@@ -31,7 +31,7 @@ export default {
     Vue.prototype.$map = map
     window.map = map
     map.on('click', function (event) {
-      self.layerSwitcherOpen = false
+      self.$store.commit('UI/closeDrawer')
     })
   }
 }

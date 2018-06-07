@@ -1,13 +1,15 @@
 import { make } from 'vuex-pathify'
 
 const state = {
-  layerSwitcherOpen: false
+  layerSwitcherOpen: false,
+  trackSwitcherOpen: false
 }
 
 const mutations = {
   ...make.mutations(state),
   closeDrawer(state) {
     state.layerSwitcherOpen = false
+    state.trackSwitcherOpen = false
   },
 }
 

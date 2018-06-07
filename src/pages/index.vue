@@ -31,7 +31,6 @@ export default {
 <style lang="stylus">
 @import "~ol/ol.css";
 @import "../css/ol-geocoder.css";
-@import "../css/ol-trackswitcher.css";
 @import "~ol-layerswitcher/src/ol-layerswitcher.css";
 .ol-geolocator
   top: 7em
