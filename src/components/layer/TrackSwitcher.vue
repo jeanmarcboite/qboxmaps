@@ -1,7 +1,7 @@
 <template>
 <div class="ol-unselectable ol-control ol-trackswitcher">
   <q-btn push small round @click="handleClick">
-    <q-icon name="fas walking" style="font-size: 1em;" />
+    <q-icon name="directions_walk" style="font-size: 1em;" />
   </q-btn>
   <q-layout-drawer side="right" v-model="trackSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
     <q-list highlight v-if="trackSwitcherOpen && $map">
