@@ -16,7 +16,7 @@ import {
   sync
 } from 'vuex-pathify'
 
-import LayerGroup from './LayerGroup.vue'
+import LayerGroup from './MapLayerGroup.vue'
 
 export default {
   components: {

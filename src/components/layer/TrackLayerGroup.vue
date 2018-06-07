@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Layer from './Layer.vue'
+import Layer from './TrackLayer.vue'
 export default {
   components: {
     Layer

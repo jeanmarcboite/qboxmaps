@@ -5,7 +5,7 @@
   </q-btn>
   <q-layout-drawer side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
     <q-list highlight v-if="layerSwitcherOpen && $map">
-      <LayerGroup v-for="(group, key) in groups()" v-if="group.get('mapLayer')" :key="key" :group="group" />
+      <MapLayerGroup v-for="(group, key) in groups()" v-if="group.get('mapLayer')" :key="key" :group="group" />
     </q-list>
   </q-layout-drawer>
 </div>
@@ -16,11 +16,11 @@ import {
   sync
 } from 'vuex-pathify'
 
-import LayerGroup from './LayerGroup.vue'
+import MapLayerGroup from './MapLayerGroup.vue'
 
 export default {
   components: {
-    LayerGroup
+    MapLayerGroup
   },
   computed: {
     ...sync('UI', ['layerSwitcherOpen']),
