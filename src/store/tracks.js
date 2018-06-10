@@ -33,7 +33,7 @@ function storeLayers(state, map) {
 
 const mutations = {
   ...make.mutations(state),
-  store(state, map) {
+  storeTracks(state, map) {
     const newState = Object.assign({tracks: {}}, state)
     storeLayers(newState, map)
     Object.assign(state, newState)

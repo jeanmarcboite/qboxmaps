@@ -48,11 +48,11 @@ export default {
   methods: {
     colorInput: function (color) {
       this.layer.setColor(color)
-      this.$store.commit('tracks/store', this.$ol.map)
+      this.$store.commit('tracks/storeTracks', this.$ol.map)
     },
     widthInput: function (width) {
       this.layer.setWidth(width)
-      this.$store.commit('tracks/store', this.$ol.map)
+      this.$store.commit('tracks/storeTracks', this.$ol.map)
     }
   }
 }

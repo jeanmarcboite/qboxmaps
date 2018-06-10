@@ -30,7 +30,5 @@ export default {
       }
     }
   },
-  mounted: function () {},
-  methods: {}
 }
 </script>

@@ -29,9 +29,9 @@ export default {
   mounted: function () {
     document.getElementById(this.id).onchange = readFiles({
       map: this.$ol.map,
+      tracks: this.$ol.tracks,
       store: this.$store
     })
-    console.log('mounted')
   },
   methods: {
     handleClick() {

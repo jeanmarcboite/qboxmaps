@@ -27,6 +27,7 @@ export default {
   },
   methods: {},
   created: function () {
+    const self = this
     this.$ol.tracks = new Group({
       title: 'Tracks',
       visible: true,

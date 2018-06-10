@@ -13,7 +13,7 @@ const readFeatures = function(event, options) {
     options.map.getView().fit(source.getExtent())
   }
 
-  store.commit('tracks/store', options.map)
+  store.commit('tracks/storeTracks', options.map)
 }
 const readFeaturesOnLoad = (options) => (event) => readFeatures(event, options)
 
