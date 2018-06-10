@@ -2,7 +2,7 @@
 <div class="ol-unselectable ol-control ol-trackswitcher">
   <q-context-menu>
     <b>Tracks</b>
-    <TrackLayerGroup ref='tlg' />
+    <TrackList ref='trackList' />
   </q-context-menu>
   <input type="file" :id="id" accept=".gpx" multiple style="display: none;" />
   <q-btn push small round @click="handleClick">
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TrackLayerGroup from './TrackLayerGroup.vue'
+import TrackList from './TrackList.vue'
 import readFiles from 'src/ol/layer/readfiles'
 
 import {
@@ -21,10 +21,10 @@ import {
 
 export default {
   components: {
-    TrackLayerGroup
+    TrackList
   },
   computed: {
-    ...sync('UI', ['tlg']),
+    ...sync('UI', ['trackList']),
   },
   props: ['tracks'],
   data: function () {
@@ -33,15 +33,12 @@ export default {
     }
   },
   mounted: function () {
-    this.tlg = this.$refs.tlg
+    this.trackList = this.$refs.trackList
     document.getElementById(this.id).onchange = readFiles({
       map: this.$ol.map,
       tracks: this.$ol.tracks,
       store: this.$store,
     })
-  },
-  updated: function () {
-    console.log('TrackSwitcher updated')
   },
   methods: {
     handleClick() {

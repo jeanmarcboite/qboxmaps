@@ -46,7 +46,7 @@ export default {
       }),
     })
     this.$ol.map.on('click', function (event) {
-      self.$store.commit('UI/closeDrawer')
+      self.layerSwitcherOpen = false
     })
   },
   mounted: function () {

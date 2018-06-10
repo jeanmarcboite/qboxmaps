@@ -8,8 +8,8 @@
     <q-slider v-model="width" :min="1" :max="10" :step="1" label snap @input="widthInput" />
   </q-context-menu>
   <q-item-main>
-    <q-item-tile ref="layerTitle">
-      {{layer.get('title')}}
+    <q-item-tile ref="trackTitle">
+      {{track.get('title')}}
     </q-item-tile>
   </q-item-main>
 </q-item>
@@ -17,7 +17,7 @@
 <script>
 export default {
   props: [
-    'layer'
+    'track'
   ],
   data() {
     return {
@@ -28,30 +28,30 @@ export default {
   computed: {
     visible: {
       get: function () {
-        return this.layer.getVisible()
+        return this.track.getVisible()
       },
       set: function (visibility) {
-        // console.log('set ' + this.layer.get('title') + ' visibility ' + visibility)
-        this.layer.setVisible(visibility)
-        // console.log('layer: ' + this.layer.get('title') + ((this.visible) ? ' visible' : ''))
+        // console.log('set ' + this.track.get('title') + ' visibility ' + visibility)
+        this.track.setVisible(visibility)
+        // console.log('track: ' + this.track.get('title') + ((this.visible) ? ' visible' : ''))
       }
     }
   },
   mounted: function () {
-    const layer = this.layer
+    const track = this.track
     const map = this.$ol.map
 
-    this.$refs.layerTitle.$el.addEventListener('click', function () {
-      map.getView().fit(layer.extent)
+    this.$refs.trackTitle.$el.addEventListener('click', function () {
+      map.getView().fit(track.extent)
     })
   },
   methods: {
     colorInput: function (color) {
-      this.layer.setColor(color)
+      this.track.setColor(color)
       this.$store.commit('tracks/storeTracks', this.$ol.map)
     },
     widthInput: function (width) {
-      this.layer.setWidth(width)
+      this.track.setWidth(width)
       this.$store.commit('tracks/storeTracks', this.$ol.map)
     }
   }

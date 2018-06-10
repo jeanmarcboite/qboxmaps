@@ -38,7 +38,7 @@ const mutations = {
     const newState = Object.assign({tracks: {}}, state)
     storeLayers(newState, map)
     Object.assign(state, newState)
-    store.commit('UI/updateTLG')
+    store.commit('UI/updateTrackList')
   }
 }
 

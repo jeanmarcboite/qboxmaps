@@ -2,19 +2,13 @@ import { make } from 'vuex-pathify'
 
 const state = {
   layerSwitcherOpen: false,
-  trackSwitcherOpen: false,
-  tlg: null
+  trackList: null
 }
 
 const mutations = {
   ...make.mutations(state),
-  closeDrawer(state) {
-    state.layerSwitcherOpen = false
-    state.trackSwitcherOpen = false
-  },
-  updateTLG(state) {
-    console.log('update TLG')
-    state.tlg.$forceUpdate()
+  updateTrackList(state) {
+    state.trackList.$forceUpdate()
   }
 }
 
