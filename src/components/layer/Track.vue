@@ -21,8 +21,8 @@ export default {
   ],
   data() {
     return {
-      color: 'amber',
-      width: 5
+      color: this.track.color,
+      width: this.track.width
     }
   },
   computed: {
