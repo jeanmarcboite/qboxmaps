@@ -17,7 +17,7 @@ const layers = [
     layers: bing,
     visible: false,
     type: 'map',
-    mapLayer: true
+    Layer: true
   }),
   new Group({
     'title': 'IGN maps',
@@ -25,7 +25,7 @@ const layers = [
     visible: true,
     openInLayerSwitcher: true,
     type: 'map',
-    mapLayer: true
+    Layer: true
   }),
 ]
 
