@@ -1,6 +1,6 @@
 <template>
 <q-list highlight inset-separator>
-  <Layer v-for="(layer, key) in group" :ref="key" :key="key" :layer.sync="layer" />
+  <Layer v-for="(layer, key) in layers()" :ref="key" :key="key" :layer.sync="layer" />
 </q-list>
 </template>
 
@@ -10,27 +10,32 @@ export default {
   components: {
     Layer
   },
-  props: [
-    'group'
-  ],
   computed: {
-    layers: function () {
-      return this.group.getLayers().getArray()
+    layerscount: function () {
+      console.log('get tracks')
+      return this.$ol.tracks.getLayers().getArray().length
     },
-    visible: {
-      get: function () {
-        return this.group.getVisible()
-      },
-      set: function (visibility) {
-        this.group.setVisible(visibility)
-      }
+  },
+  watch: {
+    // à chaque fois que la question change, cette fonction s'exécutera
+    trrr: function (newQuestion, oldQuestion) {
+      console.log('count changed')
     }
   },
   data() {
-    return {}
+    return {
+      trrr: 4
+    }
   },
   methods: {
     oninput: function () {},
+    updated: function () {
+      console.log('TrackLayerGroup updated')
+    },
+    layers: function () {
+      console.log('get tracks')
+      return this.$ol.tracks.getLayers().getArray()
+    },
   }
 }
 </script>

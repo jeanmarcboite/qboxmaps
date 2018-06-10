@@ -3,6 +3,7 @@ import VectorLayer from 'ol/layer/vector'
 import projection from 'src/ol/projection'
 import GeoJSON from 'ol/format/geojson'
 import { make } from 'vuex-pathify'
+import store from 'src/store'
 
 const state = {
   defaultColor: '#ff0000',
@@ -37,6 +38,7 @@ const mutations = {
     const newState = Object.assign({tracks: {}}, state)
     storeLayers(newState, map)
     Object.assign(state, newState)
+    store.commit('UI/updateTLG')
   }
 }
 

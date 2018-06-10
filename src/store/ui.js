@@ -2,7 +2,8 @@ import { make } from 'vuex-pathify'
 
 const state = {
   layerSwitcherOpen: false,
-  trackSwitcherOpen: false
+  trackSwitcherOpen: false,
+  tlg: null
 }
 
 const mutations = {
@@ -11,6 +12,10 @@ const mutations = {
     state.layerSwitcherOpen = false
     state.trackSwitcherOpen = false
   },
+  updateTLG(state) {
+    console.log('update TLG')
+    state.tlg.$forceUpdate()
+  }
 }
 
 export default {
