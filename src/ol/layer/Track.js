@@ -30,9 +30,8 @@ TrackLayer.prototype.getName = function(track) {
 
 TrackLayer.prototype.setColor = function(color) {
   this.color = color
-  console.log('set color of ', this.getName(), ' to ', color)
   const style = new Style({
-    stroke: new Stroke({color, width: this.width})
+    stroke: new Stroke({color: this.color, width: this.width})
   })
   this.setStyle(style)
 }
