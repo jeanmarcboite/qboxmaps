@@ -13,13 +13,13 @@ const addLayer = function (options) {
     color: options.track.color,
     width: options.track.width,
   })
-  options.map.$tracks.getLayers().push(track)
+  options.tracks.getLayers().push(track)
 }
 
-const addTracks = function(map, tracks) {
+const addTracks = function(mapTracks, tracks) {
   for (var track in tracks) {
     if (tracks.hasOwnProperty(track)) {
-      addLayer({map, track: tracks[track], title: track})
+      addLayer({tracks: mapTracks, track: tracks[track], title: track})
     }
   }
 }

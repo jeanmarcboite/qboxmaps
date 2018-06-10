@@ -18,7 +18,7 @@ export default {
   },
   mounted: function () {
     document.getElementById(this.id).onchange = readFiles({
-      map: this.$map,
+      map: this.$ol.map,
       store: this.$store
     })
   },

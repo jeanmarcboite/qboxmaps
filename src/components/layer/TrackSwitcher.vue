@@ -1,9 +1,8 @@
 <template>
 <div class="ol-unselectable ol-control ol-trackswitcher">
   <q-context-menu>
-    <q-list highlight>
-      <LayerGroup v-for="(group, key) in groups()" v-if="group.get('type') == 'track'" :key="key" :group="group" />
-    </q-list>
+    <b>Tracks</b>
+    <LayerGroup :group="tracks" />
   </q-context-menu>
   <input type="file" :id="id" accept=".gpx" multiple style="display: none;" />
   <q-btn push small round @click="handleClick">
@@ -13,10 +12,6 @@
 </template>
 
 <script>
-import {
-  sync
-} from 'vuex-pathify'
-
 import LayerGroup from './TrackLayerGroup.vue'
 import readFiles from 'src/ol/layer/readfiles'
 
@@ -24,9 +19,8 @@ export default {
   components: {
     LayerGroup
   },
-  computed: {
-    ...sync('UI', ['trackSwitcherOpen']),
-  },
+  props: ['tracks'],
+  computed: {},
   data: function () {
     return {
       id: 'TrackSwitcher/inputID'
@@ -34,14 +28,12 @@ export default {
   },
   mounted: function () {
     document.getElementById(this.id).onchange = readFiles({
-      map: this.$map,
+      map: this.$ol.map,
       store: this.$store
     })
+    console.log('mounted')
   },
   methods: {
-    groups() {
-      return (this.$map) ? this.$map.getLayers().getArray() : []
-    },
     handleClick() {
       const el = document.getElementById(this.id)
       if (el) {

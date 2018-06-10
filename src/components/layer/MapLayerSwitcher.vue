@@ -4,7 +4,7 @@
     <q-icon name="layers" style="font-size: 1em;" />
   </q-btn>
   <q-layout-drawer side="right" v-model="layerSwitcherOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null" overlay>
-    <q-list highlight v-if="layerSwitcherOpen && $map">
+    <q-list highlight v-if="layerSwitcherOpen && $ol.map">
       <MapLayerGroup v-for="(group, key) in groups()" v-if="group.get('type') == 'map'" :key="key" :group="group" />
     </q-list>
   </q-layout-drawer>
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     groups() {
-      return (this.$map) ? this.$map.getLayers().getArray() : []
+      return (this.$ol.map) ? this.$ol.map.getLayers().getArray() : []
     },
     handleClick() {
       this.layerSwitcherOpen = !this.layerSwitcherOpen

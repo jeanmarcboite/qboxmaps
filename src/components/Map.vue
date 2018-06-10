@@ -5,10 +5,13 @@
 </template>
 
 <script>
-import Vue from 'vue'
+import View from 'ol/view'
+import Group from 'ol/layer/group'
 import OlMap from 'ol/map'
 import interaction from 'ol/interaction'
 import dragAndDropInteraction from 'src/ol/interaction/dnd'
+import layers from 'src/ol/layer/sources'
+import addTracks from 'src/ol/layer/addtracks'
 import {
   sync
 } from 'vuex-pathify'
@@ -20,19 +23,33 @@ export default {
   },
   computed: {
     ...sync('UI', ['layerSwitcherOpen']),
+    ...sync('view', ['zoom', 'center']),
   },
   methods: {},
-  mounted: function () {
-    const self = this
-    const map = new OlMap({
-      target: 'map',
-      interactions: interaction.defaults().extend([dragAndDropInteraction]),
+  created: function () {
+    this.$ol.tracks = new Group({
+      title: 'Tracks',
+      visible: true,
+      layers: [],
+      type: 'track',
+      openInLayerSwitcher: true
     })
-    Vue.prototype.$map = map
-    window.map = map
-    map.on('click', function (event) {
+    addTracks(this.$ol.tracks, this.$store.state.tracks.tracks)
+    layers.push(this.$ol.tracks)
+    this.$ol.map = new OlMap({
+      layers,
+      interactions: interaction.defaults().extend([dragAndDropInteraction]),
+      view: new View({
+        center: this.center,
+        zoom: this.zoom
+      }),
+    })
+    this.$ol.map.on('click', function (event) {
       self.$store.commit('UI/closeDrawer')
     })
+  },
+  mounted: function () {
+    this.$ol.map.setTarget('map')
   }
 }
 </script>

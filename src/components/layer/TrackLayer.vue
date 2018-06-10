@@ -39,7 +39,7 @@ export default {
   },
   mounted: function () {
     const layer = this.layer
-    const map = this.$map
+    const map = this.$ol.map
 
     this.$refs.layerTitle.$el.addEventListener('click', function () {
       map.getView().fit(layer.extent)
@@ -48,11 +48,11 @@ export default {
   methods: {
     colorInput: function (color) {
       this.layer.setColor(color)
-      this.$store.commit('tracks/store', this.$map)
+      this.$store.commit('tracks/store', this.$ol.map)
     },
     widthInput: function (width) {
       this.layer.setWidth(width)
-      this.$store.commit('tracks/store', this.$map)
+      this.$store.commit('tracks/store', this.$ol.map)
     }
   }
 }

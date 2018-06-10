@@ -1,6 +1,6 @@
 <template>
 <q-list highlight inset-separator>
-  <Layer v-for="(layer, key) in layers" :ref="key" :key="key" :layer.sync="layer" />
+  <Layer v-for="(layer, key) in group" :ref="key" :key="key" :layer.sync="layer" />
 </q-list>
 </template>
 

@@ -27,7 +27,7 @@ dragAndDropInteraction.on('addfeatures', function(event) {
   const vectorSource = new VectorSource({
     features: event.features
   })
-  map.$tracks.getLayers().push(new TrackLayer({
+  map.$ol.tracks.getLayers().push(new TrackLayer({
     title,
     source: vectorSource,
     style: styleFunction,

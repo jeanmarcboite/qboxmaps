@@ -1,8 +1,6 @@
 <template>
 <q-page class="flex flex-center">
   <Map/>
-  <MapView/>
-  <MapLayers/>
   <MapControls/>
 </q-page>
 </template>
@@ -13,16 +11,12 @@
 
 <script>
 import Map from 'src/components/Map'
-import MapView from 'src/components/MapView'
-import MapLayers from 'src/components/MapLayers'
 import MapControls from 'src/components/MapControls'
 
 export default {
   name: 'App',
   components: {
     Map,
-    MapView,
-    MapLayers,
     MapControls
   },
 }

@@ -1,7 +1,7 @@
 <template>
 <div>
   <LayerSwitcher/>
-  <TrackSwitcher/>
+  <TrackSwitcher :tracks="tracks()" />
 </div>
 </template>
 
@@ -21,15 +21,17 @@ import {
   sync
 } from 'vuex-pathify'
 export default {
-  data() {
-    return {}
-  },
   components: {
     LayerSwitcher,
     TrackSwitcher,
   },
   computed: {
     ...sync('layers', ['visible'])
+  },
+  methods: {
+    tracks: function () {
+      return this.$ol.tracks.getLayers().getArray()
+    },
   },
   mounted: function () {
     const self = this
@@ -49,24 +51,24 @@ export default {
       event.target.map_.getView().setCenter(event.coordinate)
     })
 
-    this.$map.addControl(new Fullscreen())
-    this.$map.addControl(new Scaleline())
-    this.$map.addControl(new OverviewMap())
-    this.$map.addControl(new Geolocator())
-    // this.$map.addControl(new OlLayerSwitcher())
-    this.$map.addControl(geocoder)
-    // this.$map.addControl(new TrackSwitcher())
+    this.$ol.map.addControl(new Fullscreen())
+    this.$ol.map.addControl(new Scaleline())
+    this.$ol.map.addControl(new OverviewMap())
+    this.$ol.map.addControl(new Geolocator())
+    // this.$ol.map.addControl(new OlLayerSwitcher())
+    this.$ol.map.addControl(geocoder)
+    // this.$ol.map.addControl(new TrackSwitcher())
 
-    listLayers(this.$map).forEach(function (layer) {
+    listLayers(this.$ol.map).forEach(function (layer) {
       layer.setVisible(self.visible[layer.get('title')])
     })
-    this.$map.on('moveend', function (event) {
+    this.$ol.map.on('moveend', function (event) {
       store.commit('view/setView', {
         zoom: event.map.getView().getZoom(),
         center: event.map.getView().getCenter()
       })
     })
-  }
+  },
 }
 </script>
 

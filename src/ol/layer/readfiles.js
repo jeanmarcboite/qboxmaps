@@ -8,7 +8,7 @@ const readFeatures = function(event, options) {
   const format = new GPX()
   const features = format.readFeatures(event.target.result, projection)
   const source = new VectorSource({features})
-  options.map.$tracks.getLayers().push(new TrackLayer({title: options.title, source}))
+  options.tracks.getLayers().push(new TrackLayer({title: options.title, source}))
   if (options.fit) {
     options.map.getView().fit(source.getExtent())
   }
