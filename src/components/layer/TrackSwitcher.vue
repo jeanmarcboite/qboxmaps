@@ -38,6 +38,7 @@ export default {
       map: this.$ol.map,
       tracks: this.$ol.tracks,
       store: this.$store,
+      notify: this.$q.notify
     })
   },
   methods: {

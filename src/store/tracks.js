@@ -48,8 +48,15 @@ const mutations = {
   }
 }
 
+const getters = {
+  inTracks: (state) => (track) => {
+    return (track in state.tracks)
+  }
+}
+
 export default {
   namespaced: true,
   state,
   mutations,
+  getters
 }
