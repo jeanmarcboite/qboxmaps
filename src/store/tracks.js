@@ -8,35 +8,41 @@ import store from 'src/store'
 const state = {
   defaultColor: '#ff0000',
   defaultWidth: 4,
-  tracks: {}
+  tracks: {},
+  tagList: []
 }
 
-function storeFeatures(state, layer) {
+function storeFeatures(state, track) {
   const writer = new GeoJSON()
-  const features = writer.writeFeatures(layer.getSource().getFeatures(), projection)
+  const features = writer.writeFeatures(track.getSource().getFeatures(), projection)
 
-  state.tracks[layer.get('title')] = {features, color: layer.color, width: layer.width}
+  state.tracks[track.get('title')] = {
+    features,
+    color: track.color,
+    width: track.width,
+    tags: track.tags
+  }
 }
 
-function storeLayer(state, layer) {
-  if (layer instanceof Group) {
-    storeLayers(state, layer)
+function storeTrack(state, track) {
+  if (track instanceof Group) {
+    storeTracks(state, track)
   } else {
-    if (layer instanceof VectorLayer) {
-      storeFeatures(state, layer)
+    if (track instanceof VectorLayer) {
+      storeFeatures(state, track)
     }
   }
 }
 
-function storeLayers(state, map) {
-  map.getLayers().forEach(g => storeLayer(state, g))
+function storeTracks(state, map) {
+  map.getLayers().forEach(g => storeTrack(state, g))
 }
 
 const mutations = {
   ...make.mutations(state),
   storeTracks(state, map) {
     const newState = Object.assign({tracks: {}}, state)
-    storeLayers(newState, map)
+    storeTracks(newState, map)
     Object.assign(state, newState)
     store.commit('UI/updateTrackList')
   }

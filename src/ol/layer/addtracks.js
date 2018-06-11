@@ -12,6 +12,7 @@ const addLayer = function (options) {
     source,
     color: options.track.color,
     width: options.track.width,
+    tags: options.track.tags
   })
   options.tracks.getLayers().push(track)
 }

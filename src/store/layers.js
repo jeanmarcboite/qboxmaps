@@ -3,7 +3,7 @@ const state = {
     'IGN Photos': false,
     'IGN Maps': true
   },
-  tracks: {}
+  tracks: {},
 }
 
 export default {namespaced: true, state}
