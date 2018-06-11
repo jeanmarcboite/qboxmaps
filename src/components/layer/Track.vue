@@ -33,7 +33,7 @@ export default {
       color: this.track.color,
       width: this.track.width,
       shown: true,
-      tags: this.track.tags || [],
+      tags: this.track.tags,
     }
   },
   computed: {

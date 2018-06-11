@@ -10,6 +10,7 @@ export function TrackLayer(optOptions) {
   }
   this.color = optOptions.color || store.state.tracks.defaultColor
   this.width = optOptions.width || store.state.tracks.defaultWidth
+  this.tags = optOptions.tags || []
 
   const options = Object.assign({
     style: new Style({
