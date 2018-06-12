@@ -4,6 +4,7 @@
     <q-checkbox v-model="visible" checked-icon="visibility" unchecked-icon="visibility_off" color="teal" />
   </q-item-side>
   <q-context-menu>
+    <q-input v-model="title" />
     <b>{{track.get('title')}}</b>
     <q-color-picker v-model="color" @input="colorInput" />
     <q-slider v-model="width" :min="1" :max="10" :step="1" label snap @input="widthInput" />
@@ -33,6 +34,7 @@ export default {
       color: this.track.color,
       width: this.track.width,
       visible: true,
+      title: this.track.get('title'),
       tags: this.track.tags,
     }
   },
@@ -41,6 +43,10 @@ export default {
       this.track.setVisible(val)
       // console.log('track: ' + this.track.get('title') + ((this.track.getVisible()) ? ' visible' : ''))
     },
+    title: function (val) {
+      this.track.set('title', val)
+      this.$store.commit('tracks/storeTracks', this.$ol.map)
+    }
   },
   computed: {
     ...sync('tracks', ['tagList']),
