@@ -2,6 +2,7 @@
 <div>
   <LayerSwitcher/>
   <TrackSwitcher :tracks="tracks()" />
+  <Draw/>
 </div>
 </template>
 
@@ -14,6 +15,7 @@ import Geocoder from 'ol-geocoder'
 import Geolocator from 'src/ol/control/geolocator'
 import TrackSwitcher from 'src/components/layer/TrackSwitcher'
 import LayerSwitcher from 'src/components/layer/LayerSwitcher'
+import Draw from 'src/components/Draw'
 import store from 'src/store'
 import listLayers from 'src/ol/layer/list'
 
@@ -24,6 +26,7 @@ export default {
   components: {
     LayerSwitcher,
     TrackSwitcher,
+    Draw
   },
   computed: {
     ...sync('layers', ['visible'])
