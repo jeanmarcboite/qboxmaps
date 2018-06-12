@@ -4,10 +4,10 @@
     <q-checkbox v-model="checked" v-for="tag in tagList" :key="tag" :val="tag" :label="tag" />
   </q-list>
   <p class="caption">
-    <q-btn label="Uncheck all tags" @click="unselectAll" />
+    <q-btn label="Uncheck all tags" @click="unselectAll" v-if="checked.length > 0" />
   </p>
   <q-list highlight inset-separator>
-    <Track v-for="(track, key) in tracks" :key="key" :track="track" />
+    <Track v-for="(track, key) in tracks()" :key="key" :track="track" />
   </q-list>
 </div>
 </template>
@@ -23,6 +23,13 @@ export default {
   },
   computed: {
     ...sync('tracks', ['tagList']),
+  },
+  data: function () {
+    return {
+      checked: [],
+    }
+  },
+  methods: {
     tracks: function () {
       return this.$ol.tracks.getLayers().getArray().filter(track => {
         var ok = true
@@ -32,13 +39,6 @@ export default {
         return ok
       })
     },
-  },
-  data: function () {
-    return {
-      checked: [],
-    }
-  },
-  methods: {
     unselectAll: function () {
       while (this.checked.length > 0) {
         this.checked.pop()

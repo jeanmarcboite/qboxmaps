@@ -32,9 +32,15 @@ export default {
     return {
       color: this.track.color,
       width: this.track.width,
-      shown: true,
+      visible: true,
       tags: this.track.tags,
     }
+  },
+  watch: {
+    visible: function (val) {
+      this.track.setVisible(val)
+      // console.log('track: ' + this.track.get('title') + ((this.track.getVisible()) ? ' visible' : ''))
+    },
   },
   computed: {
     ...sync('tracks', ['tagList']),
@@ -45,23 +51,15 @@ export default {
         }
       })
     },
-    visible: {
-      get: function () {
-        return this.track.getVisible()
-      },
-      set: function (visibility) {
-        // console.log('set ' + this.track.get('title') + ' visibility ' + visibility)
-        this.track.setVisible(visibility)
-        // console.log('track: ' + this.track.get('title') + ((this.visible) ? ' visible' : ''))
-      }
-    }
   },
   mounted: function () {
     const track = this.track
     const map = this.$ol.map
 
     this.$refs.trackTitle.$el.addEventListener('click', function () {
-      map.getView().fit(track.extent)
+      if (track.extent) {
+        map.getView().fit(track.extent)
+      }
     })
   },
   methods: {
