@@ -18,6 +18,8 @@ export function TrackGroupLayer(optOptions) {
   }, optOptions)
 
   Group.call(this, options)
+
+  this.addTracks(optOptions.tracks)
 }
 
 ol.inherits(TrackGroupLayer, Group)

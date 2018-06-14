@@ -28,9 +28,8 @@ export default {
   created: function () {
     const self = this
     this.$ol.tracks = new TrackGroup({
-      openInLayerSwitcher: true
+      tracks: this.$store.state.tracks.tracks
     })
-    this.$ol.tracks.addTracks(this.$store.state.tracks.tracks)
     layers.push(this.$ol.tracks)
     this.$ol.map = new OlMap({
       layers,
