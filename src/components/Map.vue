@@ -6,12 +6,11 @@
 
 <script>
 import View from 'ol/view'
-import Group from 'ol/layer/group'
+import TrackGroup from 'src/ol/layer/TrackGroup'
 import OlMap from 'ol/map'
 import interaction from 'ol/interaction'
 import dragAndDropInteraction from 'src/ol/interaction/dnd'
 import layers from 'src/ol/layer/sources'
-import addTracks from 'src/ol/layer/addtracks'
 import {
   sync
 } from 'vuex-pathify'
@@ -28,14 +27,10 @@ export default {
   methods: {},
   created: function () {
     const self = this
-    this.$ol.tracks = new Group({
-      title: 'Tracks',
-      visible: true,
-      layers: [],
-      type: 'track',
+    this.$ol.tracks = new TrackGroup({
       openInLayerSwitcher: true
     })
-    addTracks(this.$ol.tracks, this.$store.state.tracks.tracks)
+    this.$ol.tracks.addTracks(this.$store.state.tracks.tracks)
     layers.push(this.$ol.tracks)
     this.$ol.map = new OlMap({
       layers,

@@ -37,6 +37,7 @@ export default {
 
         const draw = new Draw({
           source: source,
+          freehand: true,
           type: 'LineString'
         })
         this.$ol.map.addInteraction(draw)
