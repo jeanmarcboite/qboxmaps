@@ -40,7 +40,9 @@ export default {
       }),
     })
     this.$ol.map.on('click', function (event) {
-      self.layerSwitcherOpen = false
+      if (self.layerSwitcherOpen) { // avoid too many store mutations
+        self.layerSwitcherOpen = false
+      }
     })
   },
   mounted: function () {
