@@ -35,11 +35,8 @@ TrackGroup.prototype.addTrack = function (track) {
   const features = format.readFeatures(track.features, projection)
   const source = new VectorSource({ features })
   const newTrack = new Track({
-    title: track.title,
+    ...track,
     source,
-    color: track.color,
-    width: track.width,
-    tags: track.tags
   })
   console.log(track.title + ' push ' + newTrack.get('title'))
   this.getLayers().push(newTrack)
