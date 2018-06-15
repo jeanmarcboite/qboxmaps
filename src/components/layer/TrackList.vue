@@ -7,7 +7,7 @@
     <q-btn label="Uncheck all tags" @click="unselectAll" v-if="checked.length > 0" />
   </p>
   <q-list highlight inset-separator>
-    <Track v-for="(track, key) in tracks()" :key="key" :track="track" />
+    <Track v-for="(track, key) in tracks()" :key="key" :track="track" @delete="$emit('update')"/>
   </q-list>
 </div>
 </template>

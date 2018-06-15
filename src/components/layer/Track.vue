@@ -94,6 +94,7 @@
       ondelete: function() {
         this.track.remove(this.$ol.tracks)
         this.$store.commit('tracks/deleteTrack', this.track)
+        this.$emit('delete')
       },
       duplicate(label) {
         this.$q.notify(`"${label}" already in list`)
