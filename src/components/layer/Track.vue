@@ -44,8 +44,7 @@ export default {
       // console.log('track: ' + this.track.get('title') + ((this.track.getVisible()) ? ' visible' : ''))
     },
     title: function (val) {
-      this.track.set('title', val)
-      this.$store.commit('tracks/storeTracks', this.$ol.map)
+      this.track.setName(val)
     }
   },
   computed: {
@@ -71,11 +70,9 @@ export default {
   methods: {
     colorInput: function (color) {
       this.track.setColor(color)
-      this.$store.commit('tracks/storeTracks', this.$ol.map)
     },
     widthInput: function (width) {
       this.track.setWidth(width)
-      this.$store.commit('tracks/storeTracks', this.$ol.map)
     },
     onhide: function () {
       this.shown = false
@@ -87,7 +84,7 @@ export default {
         }
       })
       this.track.tags = this.tags
-      this.$store.commit('tracks/storeTracks', this.$ol.map)
+      this.$store.commit('tracks/storeTrack', this.track)
     },
     duplicate(label) {
       this.$q.notify(`"${label}" already in list`)

@@ -25,7 +25,6 @@ export default {
   data: function() {
     return {
       id: 'TrackSwitcher/inputID',
-      enableContextMenu: false
     }
   },
   mounted: function() {
@@ -41,15 +40,8 @@ export default {
       this.$refs.input.click()
     },
     updateTrackList() {
-      console.log('updateTrackList')
       this.$refs.trackList.$forceUpdate()
     },
-    rightClickHandler: function(e) {
-      e.preventDefault()
-      console.log('rightClick')
-      this.enableContextMenu = true
-      this.$refs.trackList.$forceUpdate()
-    }
   }
 }
 </script>

@@ -33,7 +33,9 @@ Track.prototype.getName = function() {
 }
 
 Track.prototype.setName = function(name) {
-  return this.set('title', name)
+  this.set('title', name)
+
+  store.commit('tracks/storeTrack', this)
 }
 
 Track.prototype.setColor = function(color) {
@@ -42,6 +44,8 @@ Track.prototype.setColor = function(color) {
     stroke: new Stroke({color: this.color, width: this.width})
   })
   this.setStyle(style)
+
+  store.commit('tracks/storeTrack', this)
 }
 
 Track.prototype.setWidth = function(width) {
@@ -50,6 +54,8 @@ Track.prototype.setWidth = function(width) {
     stroke: new Stroke({color: this.color, width: this.width})
   })
   this.setStyle(style)
+
+  store.commit('tracks/storeTrack', this)
 }
 
 export default Track
