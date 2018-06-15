@@ -30,24 +30,25 @@ Track.prototype.getName = function () {
   return this.get('title')
 }
 
-TrackGroup.prototype.addTrack = function (track, title) {
+TrackGroup.prototype.addTrack = function (track) {
   const format = new GeoJSON()
   const features = format.readFeatures(track.features, projection)
   const source = new VectorSource({ features })
   const newTrack = new Track({
-    title,
+    title: track.title,
     source,
     color: track.color,
     width: track.width,
     tags: track.tags
   })
+  console.log(track.title + ' push ' + newTrack.get('title'))
   this.getLayers().push(newTrack)
 }
 
 TrackGroup.prototype.addTracks = function (tracks) {
   for (var track in tracks) {
     if (tracks.hasOwnProperty(track)) {
-      this.addTrack(tracks[track], track)
+      this.addTrack(tracks[track])
     }
   }
 }

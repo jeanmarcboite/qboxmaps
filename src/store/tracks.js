@@ -18,6 +18,7 @@ function storeFeatures(state, track) {
 
   state.tracks[track.id] = {
     features,
+    title: track.get('title'),
     color: track.color,
     width: track.width,
     tags: track.tags
