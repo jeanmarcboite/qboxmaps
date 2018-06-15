@@ -16,7 +16,7 @@ function storeFeatures(state, track) {
   const writer = new GeoJSON()
   const features = writer.writeFeatures(track.getSource().getFeatures(), projection)
 
-  state.tracks[track.get('title')] = {
+  state.tracks[track.id] = {
     features,
     color: track.color,
     width: track.width,

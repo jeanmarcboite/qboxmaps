@@ -4,6 +4,7 @@ import GeoJSON from 'ol/format/geojson'
 import VectorSource from 'ol/source/vector'
 import TrackLayer from 'src/ol/layer/Track'
 import projection from 'src/ol/projection'
+import internalState from 'src/store/internal'
 
 export function TrackGroupLayer(optOptions) {
   if (process.env.NODE_ENV !== 'production' && !(this instanceof TrackGroupLayer)) {
@@ -16,6 +17,7 @@ export function TrackGroupLayer(optOptions) {
     layers: [],
     type: 'track',
   }, optOptions)
+  this.id = internalState.nextID++
 
   Group.call(this, options)
 
