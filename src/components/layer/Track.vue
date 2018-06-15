@@ -18,8 +18,8 @@
       </q-item-tile>
     </q-item-main>
     <q-item-side>
-      <q-btn push small round color="amber" @click="ondelete">
-    <q-icon name="layers_clear" style="font-size: 1em;" />
+      <q-btn push round color="amber" text-color="black" @click="ondelete">
+    <q-icon name="delete" />
   </q-btn>
     </q-item-side>
   </q-item>
