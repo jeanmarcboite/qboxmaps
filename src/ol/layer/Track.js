@@ -31,6 +31,10 @@ Track.prototype.getName = function() {
   return this.get('title')
 }
 
+Track.prototype.setName = function(name) {
+  return this.set('title', name)
+}
+
 Track.prototype.setColor = function(color) {
   this.color = color
   const style = new Style({
