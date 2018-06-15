@@ -1,5 +1,5 @@
 import Group from 'ol/layer/group'
-import VectorLayer from 'ol/layer/vector'
+import Track from 'src/ol/layer/Track'
 import projection from 'src/ol/projection'
 import GeoJSON from 'ol/format/geojson'
 import { make } from 'vuex-pathify'
@@ -28,7 +28,7 @@ function storeTrack(state, track) {
   if (track instanceof Group) {
     storeTracks(state, track)
   } else {
-    if (track instanceof VectorLayer) {
+    if (track instanceof Track) {
       storeFeatures(state, track)
     }
   }
@@ -44,6 +44,10 @@ const mutations = {
     const newState = Object.assign({tracks: {}}, state)
     storeTracks(newState, map)
     Object.assign(state, newState)
+    store.commit('UI/updateTrackList')
+  },
+  storeTrack(state, track) {
+    storeTrack(state, track)
     store.commit('UI/updateTrackList')
   }
 }

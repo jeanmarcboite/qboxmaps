@@ -27,7 +27,7 @@ export function TrackLayer(optOptions) {
 
 ol.inherits(TrackLayer, VectorLayer)
 
-TrackLayer.prototype.getName = function(track) {
+TrackLayer.prototype.getName = function() {
   return this.get('title')
 }
 

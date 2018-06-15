@@ -31,6 +31,7 @@ TrackLayer.prototype.getName = function () {
 }
 
 TrackGroupLayer.prototype.addTrack = function (track, title) {
+  console.log(track.get('title'))
   const format = new GeoJSON()
   const features = format.readFeatures(track.features, projection)
   const source = new VectorSource({ features })

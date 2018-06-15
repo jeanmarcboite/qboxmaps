@@ -2,12 +2,14 @@ import GPX from 'ol/format/gpx'
 import VectorSource from 'ol/source/vector'
 import store from 'src/store'
 
-import TrackLayer from 'src/ol/layer/Track'
+import Track from 'src/ol/layer/Track'
 import projection from 'src/ol/projection'
 const readFeatures = function(event, options) {
   const format = new GPX()
   const features = format.readFeatures(event.target.result, projection)
   const source = new VectorSource({features})
+
+  const track = new Track({title: options.title, source})
 
   // remove track if already exists
   const items = []
@@ -18,12 +20,12 @@ const readFeatures = function(event, options) {
   })
   items.forEach(item => { options.tracks.getLayers().remove(item) })
 
-  options.tracks.getLayers().push(new TrackLayer({title: options.title, source}))
+  options.tracks.getLayers().push(track)
   if (options.fit) {
     options.map.getView().fit(source.getExtent())
   }
 
-  store.commit('tracks/storeTracks', options.map)
+  store.commit('tracks/storeTrack', track)
 }
 const readFeaturesOnLoad = (options) => (event) => readFeatures(event, options)
 
