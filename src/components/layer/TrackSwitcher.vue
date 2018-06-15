@@ -45,6 +45,7 @@ export default {
     handleClick() {
       const el = document.getElementById(this.id)
       if (el) {
+        this.$refs.trackList.$forceUpdate()
         el.click()
       }
     }

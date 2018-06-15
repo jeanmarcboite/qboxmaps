@@ -8,8 +8,8 @@ const state = {
 const mutations = {
   ...make.mutations(state),
   updateTrackList(state) {
-    console.log('trackList.$forceUpdate()')
-    state.trackList.$forceUpdate()
+    // console.log('trackList.$forceUpdate()')
+    // state.trackList.$forceUpdate()
   }
 }
 
