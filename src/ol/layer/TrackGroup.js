@@ -38,7 +38,7 @@ TrackGroup.prototype.addTrack = function (track) {
     ...track,
     source,
   })
-  console.log(track.title + ' push ' + newTrack.get('title'))
+
   this.getLayers().push(newTrack)
 }
 
