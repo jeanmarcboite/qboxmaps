@@ -44,6 +44,7 @@ export default {
         self.layerSwitcherOpen = false
       }
     })
+    window.map = this.$ol.map
   },
   mounted: function () {
     this.$ol.map.setTarget('map')
