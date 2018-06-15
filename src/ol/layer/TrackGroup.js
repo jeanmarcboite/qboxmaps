@@ -19,7 +19,7 @@ export function TrackGroup(optOptions) {
   }, optOptions)
   this.id = internalState.nextID++
 
-  Group.call(this, options)
+    Group.call(this, options)
 
   this.addTracks(optOptions.tracks)
 }
@@ -33,7 +33,9 @@ Track.prototype.getName = function () {
 TrackGroup.prototype.addTrack = function (track) {
   const format = new GeoJSON()
   const features = format.readFeatures(track.features, projection)
-  const source = new VectorSource({ features })
+  const source = new VectorSource({
+    features
+  })
   const newTrack = new Track({
     ...track,
     source,
