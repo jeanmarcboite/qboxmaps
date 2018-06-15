@@ -26,7 +26,7 @@ export function TrackGroup(optOptions) {
 
 ol.inherits(TrackGroup, Group)
 
-Track.prototype.getName = function () {
+TrackGroup.prototype.getName = function () {
   return this.get('title')
 }
 

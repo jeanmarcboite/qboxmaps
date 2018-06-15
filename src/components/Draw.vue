@@ -10,7 +10,6 @@
 import Draw from 'ol/interaction/draw'
 import VectorSource from 'ol/source/vector'
 import Track from 'src/ol/layer/Track'
-import store from 'src/store'
 
 import {
   sync
@@ -49,8 +48,6 @@ export default {
           console.log('drawend')
           this.$ol.map.removeInteraction(draw)
           this.drawing = false
-
-          store.commit('tracks/storeTracks', this.$ol.map)
         })
       }
     }

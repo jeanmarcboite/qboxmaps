@@ -23,7 +23,8 @@ export function Track(optOptions) {
   VectorLayer.call(this, options)
 
   this.extent = options.source.getExtent().slice()
-};
+  store.commit('tracks/storeTrack', this)
+}
 
 ol.inherits(Track, VectorLayer)
 

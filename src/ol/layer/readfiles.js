@@ -24,8 +24,6 @@ const readFeatures = function(event, options) {
   if (options.fit) {
     options.map.getView().fit(source.getExtent())
   }
-
-  store.commit('tracks/storeTrack', track)
 }
 const readFeaturesOnLoad = (options) => (event) => readFeatures(event, options)
 

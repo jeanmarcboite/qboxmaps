@@ -7,7 +7,6 @@ import TopoJSON from 'ol/format/topojson'
 import Track from 'src/ol/layer/Track'
 import VectorSource from 'ol/source/vector'
 import styleFunction from 'src/ol/layer/style'
-import store from 'src/store'
 
 const dragAndDropInteraction = new DragAndDrop({
   formatConstructors: [
@@ -34,8 +33,6 @@ dragAndDropInteraction.on('addfeatures', function(event) {
     displayInLayerSwitcher: true
   }))
   map.getView().fit(vectorSource.getExtent())
-
-  store.commit('tracks/storeTracks', map)
 })
 
 export default dragAndDropInteraction
