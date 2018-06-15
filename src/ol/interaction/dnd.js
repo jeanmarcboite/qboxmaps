@@ -4,7 +4,7 @@ import GeoJSON from 'ol/format/geojson'
 import IGC from 'ol/format/igc'
 import KML from 'ol/format/kml'
 import TopoJSON from 'ol/format/topojson'
-import TrackLayer from 'src/ol/layer/Track'
+import Track from 'src/ol/layer/Track'
 import VectorSource from 'ol/source/vector'
 import styleFunction from 'src/ol/layer/style'
 import store from 'src/store'
@@ -27,7 +27,7 @@ dragAndDropInteraction.on('addfeatures', function(event) {
   const vectorSource = new VectorSource({
     features: event.features
   })
-  map.$ol.tracks.getLayers().push(new TrackLayer({
+  map.$ol.tracks.getLayers().push(new Track({
     title,
     source: vectorSource,
     style: styleFunction,

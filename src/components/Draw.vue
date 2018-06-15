@@ -9,7 +9,7 @@
 <script>
 import Draw from 'ol/interaction/draw'
 import VectorSource from 'ol/source/vector'
-import TrackLayer from 'src/ol/layer/Track'
+import Track from 'src/ol/layer/Track'
 import store from 'src/store'
 
 import {
@@ -41,7 +41,7 @@ export default {
           type: 'LineString'
         })
         this.$ol.map.addInteraction(draw)
-        this.$ol.tracks.getLayers().push(new TrackLayer({
+        this.$ol.tracks.getLayers().push(new Track({
           title: 'New Track',
           source
         }))

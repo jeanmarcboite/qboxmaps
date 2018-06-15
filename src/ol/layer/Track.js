@@ -5,9 +5,9 @@ import Style from 'ol/style/style'
 import store from 'src/store'
 import internalState from 'src/store/internal'
 
-export function TrackLayer(optOptions) {
-  if (process.env.NODE_ENV !== 'production' && !(this instanceof TrackLayer)) {
-    console.warn('TrackLayer is a constructor and should be called with the `new` keyword')
+export function Track(optOptions) {
+  if (process.env.NODE_ENV !== 'production' && !(this instanceof Track)) {
+    console.warn('Track is a constructor and should be called with the `new` keyword')
   }
   this.id = internalState.nextID++
   this.color = optOptions.color || store.state.tracks.defaultColor
@@ -25,13 +25,13 @@ export function TrackLayer(optOptions) {
   this.extent = options.source.getExtent().slice()
 };
 
-ol.inherits(TrackLayer, VectorLayer)
+ol.inherits(Track, VectorLayer)
 
-TrackLayer.prototype.getName = function() {
+Track.prototype.getName = function() {
   return this.get('title')
 }
 
-TrackLayer.prototype.setColor = function(color) {
+Track.prototype.setColor = function(color) {
   this.color = color
   const style = new Style({
     stroke: new Stroke({color: this.color, width: this.width})
@@ -39,7 +39,7 @@ TrackLayer.prototype.setColor = function(color) {
   this.setStyle(style)
 }
 
-TrackLayer.prototype.setWidth = function(width) {
+Track.prototype.setWidth = function(width) {
   this.width = width
   const style = new Style({
     stroke: new Stroke({color: this.color, width: this.width})
@@ -47,4 +47,4 @@ TrackLayer.prototype.setWidth = function(width) {
   this.setStyle(style)
 }
 
-export default TrackLayer
+export default Track

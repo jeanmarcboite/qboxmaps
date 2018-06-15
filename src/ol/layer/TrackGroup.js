@@ -2,13 +2,13 @@ import ol from 'ol'
 import Group from 'ol/layer/group'
 import GeoJSON from 'ol/format/geojson'
 import VectorSource from 'ol/source/vector'
-import TrackLayer from 'src/ol/layer/Track'
+import Track from 'src/ol/layer/Track'
 import projection from 'src/ol/projection'
 import internalState from 'src/store/internal'
 
-export function TrackGroupLayer(optOptions) {
-  if (process.env.NODE_ENV !== 'production' && !(this instanceof TrackGroupLayer)) {
-    console.warn('TrackGroupLayer is a constructor and should be called with the `new` keyword')
+export function TrackGroup(optOptions) {
+  if (process.env.NODE_ENV !== 'production' && !(this instanceof TrackGroup)) {
+    console.warn('TrackGroup is a constructor and should be called with the `new` keyword')
   }
 
   const options = Object.assign({
@@ -24,28 +24,27 @@ export function TrackGroupLayer(optOptions) {
   this.addTracks(optOptions.tracks)
 }
 
-ol.inherits(TrackGroupLayer, Group)
+ol.inherits(TrackGroup, Group)
 
-TrackLayer.prototype.getName = function () {
+Track.prototype.getName = function () {
   return this.get('title')
 }
 
-TrackGroupLayer.prototype.addTrack = function (track, title) {
-  console.log(track.get('title'))
+TrackGroup.prototype.addTrack = function (track, title) {
   const format = new GeoJSON()
   const features = format.readFeatures(track.features, projection)
   const source = new VectorSource({ features })
-  const trackLayer = new TrackLayer({
+  const newTrack = new Track({
     title,
     source,
     color: track.color,
     width: track.width,
     tags: track.tags
   })
-  this.getLayers().push(trackLayer)
+  this.getLayers().push(newTrack)
 }
 
-TrackGroupLayer.prototype.addTracks = function (tracks) {
+TrackGroup.prototype.addTracks = function (tracks) {
   for (var track in tracks) {
     if (tracks.hasOwnProperty(track)) {
       this.addTrack(tracks[track], track)
@@ -53,4 +52,4 @@ TrackGroupLayer.prototype.addTracks = function (tracks) {
   }
 }
 
-export default TrackGroupLayer
+export default TrackGroup
