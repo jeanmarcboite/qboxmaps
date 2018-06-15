@@ -3,7 +3,6 @@ import Track from 'src/ol/layer/Track'
 import projection from 'src/ol/projection'
 import GeoJSON from 'ol/format/geojson'
 import { make } from 'vuex-pathify'
-import store from 'src/store'
 
 const state = {
   defaultColor: '#ff0000',
@@ -45,11 +44,9 @@ const mutations = {
     const newState = Object.assign({tracks: {}}, state)
     storeTracks(newState, map)
     Object.assign(state, newState)
-    store.commit('UI/updateTrackList')
   },
   storeTrack(state, track) {
     storeTrack(state, track)
-    store.commit('UI/updateTrackList')
   }
 }
 
