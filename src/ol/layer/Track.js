@@ -10,13 +10,16 @@ export function Track(optOptions) {
     console.warn('Track is a constructor and should be called with the `new` keyword')
   }
   this.id = internalState.nextID++
-  this.color = optOptions.color || store.state.tracks.defaultColor
+    this.color = optOptions.color || store.state.tracks.defaultColor
   this.width = optOptions.width || store.state.tracks.defaultWidth
   this.tags = optOptions.tags || []
 
   const options = Object.assign({
     style: new Style({
-      stroke: new Stroke({color: this.color, width: this.width})
+      stroke: new Stroke({
+        color: this.color,
+        width: this.width
+      })
     })
   }, optOptions)
 
@@ -28,34 +31,54 @@ export function Track(optOptions) {
 
 ol.inherits(Track, VectorLayer)
 
-Track.prototype.getName = function() {
+Track.prototype.getName = function () {
   return this.get('title')
 }
 
-Track.prototype.setName = function(name) {
+Track.prototype.setName = function (name) {
   this.set('title', name)
 
   store.commit('tracks/storeTrack', this)
 }
 
-Track.prototype.setColor = function(color) {
+Track.prototype.setColor = function (color) {
   this.color = color
   const style = new Style({
-    stroke: new Stroke({color: this.color, width: this.width})
+    stroke: new Stroke({
+      color: this.color,
+      width: this.width
+    })
   })
   this.setStyle(style)
 
   store.commit('tracks/storeTrack', this)
 }
 
-Track.prototype.setWidth = function(width) {
+Track.prototype.setWidth = function (width) {
   this.width = width
   const style = new Style({
-    stroke: new Stroke({color: this.color, width: this.width})
+    stroke: new Stroke({
+      color: this.color,
+      width: this.width
+    })
   })
   this.setStyle(style)
 
   store.commit('tracks/storeTrack', this)
+}
+
+Track.prototype.remove = function (tracks) {
+  const title = this.getName()
+  const items = []
+  tracks.getLayers().forEach(function (item) {
+    if (item.get('title') === title) {
+     items.push(item)
+    } 
+  })
+  
+  items.forEach(item => {
+    tracks.getLayers().remove(item)
+  })
 }
 
 export default Track

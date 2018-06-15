@@ -2,7 +2,9 @@ import Group from 'ol/layer/group'
 import Track from 'src/ol/layer/Track'
 import projection from 'src/ol/projection'
 import GeoJSON from 'ol/format/geojson'
-import { make } from 'vuex-pathify'
+import {
+  make
+} from 'vuex-pathify'
 
 const state = {
   defaultColor: '#ff0000',
@@ -41,12 +43,17 @@ function storeTracks(state, map) {
 const mutations = {
   ...make.mutations(state),
   storeTracks(state, map) {
-    const newState = Object.assign({tracks: {}}, state)
+    const newState = Object.assign({
+      tracks: {}
+    }, state)
     storeTracks(newState, map)
     Object.assign(state, newState)
   },
   storeTrack(state, track) {
     storeTrack(state, track)
+  },
+  deleteTrack(state, track) {
+    delete state.tracks[track.id]
   }
 }
 

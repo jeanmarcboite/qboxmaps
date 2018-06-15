@@ -11,6 +11,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "jshint": "^2.9.5",
     "ol": "^4.6.5",
     "ol-geocoder": "^3.1.0",
     "ol-layerswitcher": "^2.0.0",

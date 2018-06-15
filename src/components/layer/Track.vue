@@ -17,6 +17,11 @@
         {{track.get('title')}}
       </q-item-tile>
     </q-item-main>
+    <q-item-side>
+      <q-btn push small round color="amber" @click="ondelete">
+    <q-icon name="layers_clear" style="font-size: 1em;" />
+  </q-btn>
+    </q-item-side>
   </q-item>
 </template>
 
@@ -85,6 +90,10 @@
         })
         this.track.tags = this.tags
         this.$store.commit('tracks/storeTrack', this.track)
+      },
+      ondelete: function() {
+        this.track.remove(this.$ol.tracks)
+        this.$store.commit('tracks/deleteTrack', this.track)
       },
       duplicate(label) {
         this.$q.notify(`"${label}" already in list`)
