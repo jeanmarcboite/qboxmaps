@@ -29,6 +29,7 @@ module.exports = {
     'no-unused-vars': 1,
     'no-unneeded-ternary': 0,
     'space-before-function-paren': 'off',
+    'no-trailing-spaces': 0,
     // allow async-await
     'generator-star-spacing': 'off',
 
