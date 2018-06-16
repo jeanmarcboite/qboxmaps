@@ -10,7 +10,8 @@ export function Track(optOptions) {
     console.warn('Track is a constructor and should be called with the `new` keyword')
   }
   this.id = internalState.nextID++
-    this.color = optOptions.color || store.state.tracks.defaultColor
+    this.timestamp = Date.now()
+  this.color = optOptions.color || store.state.tracks.defaultColor
   this.width = optOptions.width || store.state.tracks.defaultWidth
   this.tags = optOptions.tags || []
 
@@ -72,10 +73,10 @@ Track.prototype.remove = function (tracks) {
   const items = []
   tracks.getLayers().forEach(function (item) {
     if (item.get('title') === title) {
-     items.push(item)
-    } 
+      items.push(item)
+    }
   })
-  
+
   items.forEach(item => {
     tracks.getLayers().remove(item)
   })

@@ -37,7 +37,7 @@ export default {
           ok = ok && (track.tags.includes(tag))
         })
         return ok
-      })
+      }).sort((a, b) => a.timestamp < b.timestamp)
     },
     unselectAll: function () {
       while (this.checked.length > 0) {

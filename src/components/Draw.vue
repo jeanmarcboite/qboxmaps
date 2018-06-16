@@ -1,6 +1,6 @@
 <template>
 <div class="ol-unselectable ol-control ol-drawbutton">
-  <q-btn push small round @click="handleClick">
+  <q-btn push small round @click="handleClick" title="draw a new track (press shift for free hand drawing)">
     <q-icon name="timeline" style="font-size: 1em;" v-if="!drawing" />
     <q-icon name="touch_app" style="font-size: 1em;" v-if="drawing" />
   </q-btn>
@@ -36,7 +36,7 @@ export default {
 
         const draw = new Draw({
           source: source,
-          freehand: true,
+          freehand: false,
           type: 'LineString'
         })
         this.$ol.map.addInteraction(draw)
@@ -46,6 +46,7 @@ export default {
         }))
         draw.on('drawend', (event) => {
           console.log('drawend')
+          event.preventDefault()
           this.$ol.map.removeInteraction(draw)
           this.drawing = false
         })
@@ -56,8 +57,9 @@ export default {
 </script>
 
 <style lang="stylus">
-.ol-drawbutton
-  position: absolute
-  top: 6.5em
-  right: 0.5em
+.ol-drawbutton {
+  position: absolute;
+  top: 6.5em;
+  right: 0.5em;
+}
 </style>
