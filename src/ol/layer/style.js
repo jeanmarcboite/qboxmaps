@@ -12,7 +12,9 @@ export const profileStyle = [
       radius: 10,
       radius2: 5,
       points: 5,
-      fill: new Fill({color: 'red'})
+      fill: new Fill({
+        color: 'red'
+      })
     }),
     stroke: new Stroke({
       color: [
@@ -23,7 +25,28 @@ export const profileStyle = [
     fill: new Fill({
       color: [0, 0, 255, 0.3]
     })
-  })]
+  })
+]
+
+export const drawStyle = [
+  new Style({
+    image: new CircleStyle({
+      radius: 7,
+      fill: new Fill({
+        color: 'red'
+      })
+    }),
+    stroke: new Stroke({
+      color: [
+        0, 0, 255
+      ],
+      width: 2
+    }),
+    fill: new Fill({
+      color: [0, 0, 255, 0.3]
+    })
+  })
+]
 
 export const defaultStyle = {
   'Point': new Style({
@@ -31,38 +54,66 @@ export const defaultStyle = {
       radius: 10,
       radius2: 5,
       points: 8,
-      fill: new Fill({color: 'red'})
+      fill: new Fill({
+        color: 'red'
+      })
     }),
     image2: new CircleStyle({
-      fill: new Fill({color: 'rgba(255,255,0,0.5)'}),
+      fill: new Fill({
+        color: 'rgba(255,255,0,0.5)'
+      }),
       radius: 8,
-      stroke: new Stroke({color: '#f0f', width: 1})
+      stroke: new Stroke({
+        color: '#f0f',
+        width: 1
+      })
     })
   }),
   'LineString': new Style({
-    stroke: new Stroke({color: '#0ff', width: 3})
+    stroke: new Stroke({
+      color: '#0ff',
+      width: 3
+    })
   }),
   'Polygon': new Style({
-    fill: new Fill({color: 'rgba(0,255,255,0.5)'}),
-    stroke: new Stroke({color: '#0ff', width: 1})
+    fill: new Fill({
+      color: 'rgba(0,255,255,0.5)'
+    }),
+    stroke: new Stroke({
+      color: '#0ff',
+      width: 1
+    })
   }),
   'MultiPoint': new Style({
     image: new CircleStyle({
-      fill: new Fill({color: 'rgba(255,0,255,0.5)'}),
+      fill: new Fill({
+        color: 'rgba(255,0,255,0.5)'
+      }),
       radius: 5,
-      stroke: new Stroke({color: '#f0f', width: 1})
+      stroke: new Stroke({
+        color: '#f0f',
+        width: 1
+      })
     })
   }),
   'MultiLineString': new Style({
-    stroke: new Stroke({color: defaultColor, width: 7})
+    stroke: new Stroke({
+      color: defaultColor,
+      width: 7
+    })
   }),
   'MultiPolygon': new Style({
-    fill: new Fill({color: 'rgba(0,0,255,0.5)'}),
-    stroke: new Stroke({color: '#00f', width: 1})
+    fill: new Fill({
+      color: 'rgba(0,0,255,0.5)'
+    }),
+    stroke: new Stroke({
+      color: '#00f',
+      width: 1
+    })
   })
 }
 
-const styleFunction = function(feature, resolution) {
+const styleFunction = function (feature, resolution) {
   console.error('styleFunction')
   console.log(feature)
   console.log(resolution)
