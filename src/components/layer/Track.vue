@@ -17,9 +17,12 @@
         {{track.get('title')}}
       </q-item-tile>
     </q-item-main>
-    <q-item-side>
-      <q-btn push round color="amber" text-color="black" @click="ondelete">
-    <q-icon name="delete" />
+  <q-item-side>
+     <q-btn push round color="blue" text-color="black" @click="onedit">
+    <q-icon name="edit" />
+  </q-btn>
+       <q-btn push round color="amber" text-color="black" @click="ondelete">
+   <q-icon name="delete" />
   </q-btn>
     </q-item-side>
   </q-item>
@@ -91,12 +94,16 @@
         this.track.tags = this.tags
         this.$store.commit('tracks/storeTrack', this.track)
       },
+      onedit: function() {
+        console.log('edit')
+        console.dir(this.track.source)
+      },
       ondelete: function() {
         this.track.remove(this.$ol.tracks)
         this.$store.commit('tracks/deleteTrack', this.track)
         this.$emit('delete')
       },
-      duplicate(label) {
+       duplicate(label) {
         this.$q.notify(`"${label}" already in list`)
       }
     }
