@@ -69,10 +69,10 @@ Track.prototype.setWidth = function (width) {
 }
 
 Track.prototype.remove = function (tracks) {
-  const title = this.getName()
+  const timestamp = this.timestamp
   const items = []
   tracks.getLayers().forEach(function (item) {
-    if (item.get('title') === title) {
+    if (item.timestamp === timestamp) {
       items.push(item)
     }
   })
