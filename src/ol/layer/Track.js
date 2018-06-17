@@ -11,6 +11,7 @@ export function Track(optOptions) {
   }
   this.id = internalState.nextID++
     this.timestamp = Date.now()
+
   this.color = optOptions.color || store.state.tracks.defaultColor
   this.width = optOptions.width || store.state.tracks.defaultWidth
   this.tags = optOptions.tags || []
@@ -28,6 +29,7 @@ export function Track(optOptions) {
 
   this.extent = options.source.getExtent().slice()
   store.commit('tracks/storeTrack', this)
+  console.log(this.id + ' new Track ' + this.getName() + ' ' + this.timestamp)
 }
 
 ol.inherits(Track, VectorLayer)
@@ -80,6 +82,8 @@ Track.prototype.remove = function (tracks) {
   items.forEach(item => {
     tracks.getLayers().remove(item)
   })
+
+  store.commit('tracks/removeTrack', this)
 }
 
 export default Track

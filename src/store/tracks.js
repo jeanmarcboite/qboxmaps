@@ -38,29 +38,31 @@ function storeTrack(state, track) {
 }
 
 function storeTracks(state, map) {
-  map.getLayers().forEach(g => storeTrack(state, g))
+  map.getLayers().forEach((g) => storeTrack(state, g))
 }
 
 const mutations = {
   ...make.mutations(state),
   storeTracks(state, map) {
     const newState = Object.assign({
-      tracks: {}
-    }, state)
+        tracks: {}
+      },
+      state
+    )
     storeTracks(newState, map)
     Object.assign(state, newState)
   },
   storeTrack(state, track) {
     storeTrack(state, track)
   },
-  deleteTrack(state, track) {
+  removeTrack(state, track) {
     delete state.tracks[track.id]
   }
 }
 
 const getters = {
   inTracks: (state) => (track) => {
-    return (track in state.tracks)
+    return track in state.tracks
   }
 }
 
