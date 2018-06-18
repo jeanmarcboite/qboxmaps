@@ -4,6 +4,7 @@ import GeoJSON from 'ol/format/geojson'
 import VectorSource from 'ol/source/vector'
 import Track from 'src/ol/layer/Track'
 import projection from 'src/ol/projection'
+import store from 'src/store'
 import internalState from 'src/store/internal'
 
 export function TrackGroup(optOptions) {
@@ -52,4 +53,24 @@ TrackGroup.prototype.addTracks = function (tracks) {
   }
 }
 
+TrackGroup.prototype.delete = function (track) {
+  const items = []
+  this.getLayers().forEach(function (item) {
+    if (item.timestamp === track.timestamp) {
+      items.push(item)
+    }
+  })
+
+  items.forEach(item => {
+    this.getLayers().remove(item)
+  })
+
+  store.commit('tracks/delete', track)
+}
+
+TrackGroup.prototype.clear = function () {
+  this.getLayers().clear()
+
+  store.commit('tracks/clear')
+}
 export default TrackGroup

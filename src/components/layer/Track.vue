@@ -99,7 +99,7 @@
         console.dir(this.track.source)
       },
       ondelete: function() {
-        this.track.remove(this.$ol.tracks)
+        this.$ol.tracks.delete(this.track)
         this.$emit('delete')
       },
        duplicate(label) {

@@ -2,8 +2,13 @@
 
 <div class="ol-unselectable ol-control ol-trackswitcher" @contextmenu="updateTrackList($event)">
   <q-context-menu>
-    <b>Tracks</b>
-    <TrackList ref='trackList' @update="updateTrackList"/>
+    <div>
+    <q-btn>Tracks</q-btn>
+         <q-btn push round color="amber" text-color="black" @click="ondelete">
+   <q-icon name="delete" />
+  </q-btn>
+  </div>
+  <TrackList ref='trackList' @update="updateTrackList"/>
   </q-context-menu>
   <input type="file" ref="input" accept=".gpx" multiple style="display: none;" />
   <q-btn push small round @click="handleClick">
@@ -42,6 +47,25 @@ export default {
     updateTrackList() {
       this.$refs.trackList.$forceUpdate()
     },
+    ondelete() {
+      this.$q.notify({
+        message: 'Delete all tracks?',
+        type: 'negative',
+        timeout: 0,
+        position: 'right',
+        actions: [
+          {
+            label: 'Cancel',
+          },
+          {
+            label: 'Delete all',
+            handler: () => {
+              this.$ol.tracks.clear()
+            }
+          }
+        ]
+      })
+    }
   }
 }
 </script>

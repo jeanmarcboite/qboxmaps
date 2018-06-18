@@ -70,20 +70,4 @@ Track.prototype.setWidth = function (width) {
   store.commit('tracks/storeTrack', this)
 }
 
-Track.prototype.remove = function (tracks) {
-  const timestamp = this.timestamp
-  const items = []
-  tracks.getLayers().forEach(function (item) {
-    if (item.timestamp === timestamp) {
-      items.push(item)
-    }
-  })
-
-  items.forEach(item => {
-    tracks.getLayers().remove(item)
-  })
-
-  store.commit('tracks/removeTrack', this)
-}
-
 export default Track
