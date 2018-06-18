@@ -23,6 +23,7 @@ export default {
   },
   computed: {
     ...sync('tracks', ['tagList']),
+    ...sync('OL', ['map'])
   },
   data: function () {
     return {
@@ -31,7 +32,7 @@ export default {
   },
   methods: {
     tracks: function () {
-      return this.$ol.tracks.getLayers().getArray().filter(track => {
+      return this.map.tracks.getLayers().getArray().filter(track => {
         var ok = true
         this.checked.forEach(tag => {
           ok = ok && (track.tags.includes(tag))

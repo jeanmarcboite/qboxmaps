@@ -17,7 +17,7 @@ const dragAndDropInteraction = new DragAndDrop({
     TopoJSON
   ]
 })
-dragAndDropInteraction.on('addfeatures', function(event) {
+dragAndDropInteraction.on('addfeatures', function (event) {
   const map = event.target.map_
   var title = 'new layer'
   if (event.file) {
@@ -26,7 +26,7 @@ dragAndDropInteraction.on('addfeatures', function(event) {
   const vectorSource = new VectorSource({
     features: event.features
   })
-  map.$ol.tracks.getLayers().push(new Track({
+  map.tracks.getLayers().push(new Track({
     title,
     source: vectorSource,
     style: styleFunction,

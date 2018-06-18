@@ -7,6 +7,7 @@ import pathify from 'vuex-pathify'
 import view from './view'
 import layers from './layers'
 import UI from './ui'
+import OL from './ol'
 import tracks from './tracks'
 
 const vuexStorage = new VuexPersist({
@@ -14,7 +15,11 @@ const vuexStorage = new VuexPersist({
   storage: window.localStorage, // or window.sessionStorage or localForage
   // Function that passes the state and returns the state with only the objects you want to store.
   reducer: (state) => {
-    const { UI, ...reducedState } = state
+    const {
+      UI,
+      OL,
+      ...reducedState
+    } = state
     return reducedState
   },
   // Function that passes a mutation and lets you decide if it should update the state in localStorage.
@@ -42,7 +47,8 @@ const store = new Vuex.Store({
     tracks,
     layers,
     view,
-    UI
+    UI,
+    OL
   },
   state,
   plugins

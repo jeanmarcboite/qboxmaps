@@ -57,6 +57,7 @@
     },
     computed: {
       ...sync('tracks', ['tagList']),
+      ...sync('OL', ['map']),
       tagMap: function() {
         return this.tagList.map(label => {
           return {
@@ -67,7 +68,7 @@
     },
     mounted: function() {
       const track = this.track
-      const map = this.$ol.map
+      const map = this.map
 
       this.$refs.trackTitle.$el.addEventListener('click', function() {
         if (track.extent) {
@@ -99,7 +100,7 @@
         console.dir(this.track.source)
       },
       ondelete: function() {
-        this.$ol.tracks.delete(this.track)
+        this.map.tracks.delete(this.track)
         this.$emit('delete')
       },
        duplicate(label) {

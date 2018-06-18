@@ -29,11 +29,12 @@ export default {
     Draw
   },
   computed: {
-    ...sync('layers', ['visible'])
+    ...sync('layers', ['visible']),
+    ...sync('OL', ['map'])
   },
   methods: {
     tracks: function () {
-      return this.$ol.tracks.getLayers().getArray()
+      return this.map.tracks.getLayers().getArray()
     },
   },
   mounted: function () {
@@ -54,18 +55,16 @@ export default {
       event.target.map_.getView().setCenter(event.coordinate)
     })
 
-    this.$ol.map.addControl(new Fullscreen())
-    this.$ol.map.addControl(new Scaleline())
-    this.$ol.map.addControl(new OverviewMap())
-    this.$ol.map.addControl(new Geolocator())
-    // this.$ol.map.addControl(new OlLayerSwitcher())
-    this.$ol.map.addControl(geocoder)
-    // this.$ol.map.addControl(new TrackSwitcher())
+    this.map.addControl(new Fullscreen())
+    this.map.addControl(new Scaleline())
+    this.map.addControl(new OverviewMap())
+    this.map.addControl(new Geolocator())
+    this.map.addControl(geocoder)
 
-    listLayers(this.$ol.map).forEach(function (layer) {
+    listLayers(this.map).forEach(function (layer) {
       layer.setVisible(self.visible[layer.get('title')])
     })
-    this.$ol.map.on('moveend', function (event) {
+    this.map.on('moveend', function (event) {
       store.commit('view/setView', {
         zoom: event.map.getView().getZoom(),
         center: event.map.getView().getCenter()
@@ -76,13 +75,16 @@ export default {
 </script>
 
 <style lang='stylus'>
-.ol-scale-line
-  position: absolute
-  bottom: 4.5em
-  left: 7.5em
-.ol-trackswitcher
-  position: absolute
-  top: 4.5em
-  right: 0.5em
-  text-align: left
+.ol-scale-line {
+  position: absolute;
+  bottom: 4.5em;
+  left: 7.5em;
+}
+
+.ol-trackswitcher {
+  position: absolute;
+  top: 4.5em;
+  right: 0.5em;
+  text-align: left;
+}
 </style>

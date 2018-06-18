@@ -5,20 +5,21 @@
 </template>
 
 <script>
-import View from 'ol/view'
-import TrackGroup from 'src/ol/layer/TrackGroup'
-import OlMap from 'ol/map'
-import interaction from 'ol/interaction'
-import dragAndDropInteraction from 'src/ol/interaction/dnd'
-import layers from 'src/ol/layer/sources'
 import {
   sync
 } from 'vuex-pathify'
 
 export default {
   name: 'Map',
+  props: {
+    'target': {
+      default: 'map',
+      type: String
+    }
+  },
   data() {
-    return {}
+    return {
+    }
   },
   computed: {
     ...sync('UI', ['layerSwitcherOpen']),
@@ -26,35 +27,21 @@ export default {
   },
   methods: {},
   created: function () {
-    const self = this
-    this.$ol.tracks = new TrackGroup({
+    this.$store.commit('OL/newMap', {
+      target: this.target,
       tracks: this.$store.state.tracks.tracks
     })
-    layers.push(this.$ol.tracks)
-    this.$ol.map = new OlMap({
-      layers,
-      interactions: interaction.defaults().extend([dragAndDropInteraction]),
-      view: new View({
-        center: this.center,
-        zoom: this.zoom
-      }),
-    })
-    this.$ol.map.on('click', function (event) {
-      if (self.layerSwitcherOpen) { // avoid too many store mutations
-        self.layerSwitcherOpen = false
-      }
-    })
-    window.map = this.$ol.map
   },
   mounted: function () {
-    this.$ol.map.setTarget('map')
+    this.$store.commit('OL/setTarget', 'map')
   }
 }
 </script>
 
 <style lang="stylus">
-.ol-map
-  position: fixed
-  width: 100%
-  height: 100%
+.ol-map {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
 </style>

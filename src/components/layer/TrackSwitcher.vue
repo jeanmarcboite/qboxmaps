@@ -21,11 +21,17 @@
 import TrackList from './TrackList.vue'
 import readFiles from 'src/ol/layer/readfiles'
 
+import {
+  sync
+} from 'vuex-pathify'
+
 export default {
   components: {
     TrackList
   },
-  computed: {},
+  computed: {
+    ...sync('OL', ['map'])
+  },
   props: ['tracks'],
   data: function() {
     return {
@@ -33,9 +39,10 @@ export default {
     }
   },
   mounted: function() {
+    console.log('TrackSwitcher mounted')
     this.$refs.input.onchange = readFiles({
-      map: this.$ol.map,
-      tracks: this.$ol.tracks,
+      map: this.map,
+      tracks: this.map.tracks,
       store: this.$store,
       notify: this.$q.notify
     })
@@ -60,7 +67,7 @@ export default {
           {
             label: 'Delete all',
             handler: () => {
-              this.$ol.tracks.clear()
+              this.map.tracks.clear()
             }
           }
         ]

@@ -38,7 +38,7 @@ export default {
         })
       
         const modify = new Modify({source: source})
-        this.$ol.map.addInteraction(modify)
+        this.$store.commit('OL/addInteraction', 'map', modify)
 
         const draw = new Draw({
           source: source,
@@ -48,8 +48,8 @@ export default {
         
         const snap = new Snap({source: source})
         
-        this.$ol.map.addInteraction(draw)
-        this.$ol.map.addInteraction(snap)
+        this.$store.commit('OL/addInteraction', 'map', draw)
+        this.$store.commit('OL/addInteraction', 'map', snap)
         
         const track = new Track({
           title: 'New Track',
@@ -57,13 +57,11 @@ export default {
           style: drawStyle
         })
 
-        this.$ol.tracks.getLayers().push(track)
+        this.$store.commit('OL/pushTrack', 'map', track)
         
         draw.on('drawend', (event) => {
           console.log('drawend')
           event.preventDefault()
-          this.$ol.map.removeInteraction(draw)
-          this.$ol.map.removeInteraction(snap)
           this.drawing = false
           this.$store.commit('tracks/storeTrack', track)
        })
