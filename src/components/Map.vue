@@ -35,11 +35,8 @@ export default {
     })
   },
   mounted: function () {
-    console.log(document.getElementById('map'))
-    this.map.setTarget('map')
-    console.log('setTarget ')
-      console.log(document.getElementById('map'))
-// this.$store.commit('OL/setTarget', 'map')
+    // this.map.setTarget('map')
+   this.$store.commit('OL/setTarget', 'map')
   }
 }
 </script>
