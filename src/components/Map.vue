@@ -24,16 +24,22 @@ export default {
   computed: {
     ...sync('UI', ['layerSwitcherOpen']),
     ...sync('view', ['zoom', 'center']),
+    ...sync('OL', ['map'])
   },
   methods: {},
   created: function () {
-    this.$store.commit('OL/newMap', {
-      target: this.target,
+    this.$store.commit('OL/newMap', 
+    { 
+      name: 'map',
       tracks: this.$store.state.tracks.tracks
     })
   },
   mounted: function () {
-    this.$store.commit('OL/setTarget', 'map')
+    console.log(document.getElementById('map'))
+    this.map.setTarget('map')
+    console.log('setTarget ')
+      console.log(document.getElementById('map'))
+// this.$store.commit('OL/setTarget', 'map')
   }
 }
 </script>

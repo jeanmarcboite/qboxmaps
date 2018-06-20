@@ -14,7 +14,6 @@ export function Map(optOptions) {
   this.timestamp = Date.now()
 
   const options = Object.assign({
-    target: 'map',
     layers,
     interactions: interaction.defaults().extend([dragAndDropInteraction]),
   }, optOptions)
@@ -39,6 +38,9 @@ ol.inherits(Map, OlMap)
 
 Map.prototype.getName = function () {
   return this.target
+}
+Map.prototype.about = function () {
+  return this.getView()
 }
 
 export default Map

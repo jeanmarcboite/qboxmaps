@@ -55,11 +55,11 @@ export default {
       event.target.map_.getView().setCenter(event.coordinate)
     })
 
-    this.map.addControl(new Fullscreen())
+    store.commit('OL/addControl', ['map', geocoder])
+    store.commit('OL/addControl', ['map', new Fullscreen()])
     this.map.addControl(new Scaleline())
     this.map.addControl(new OverviewMap())
     this.map.addControl(new Geolocator())
-    this.map.addControl(geocoder)
 
     listLayers(this.map).forEach(function (layer) {
       layer.setVisible(self.visible[layer.get('title')])
