@@ -16,19 +16,16 @@ const getName = function (state, options) {
 
 const mutations = {
   newMap(state, options) {
-    console.log('new map: ', options.name)
     options.view = new View(view.state)
     state[options.name] = new Map(options)
   },
   setTarget(state, options) {
-    console.log('setTarget ' + getName(state, options))
     state[getName(state, options)].setTarget(options.target)
   },
   setCenter(state, options) {
     state[getName(state, options)].getView().setCenter(options.center)
   },
   addControl(state, options) {
-    console.log('addControl ' + name)
     state[getName(state, options)].addControl(options.control)
   },
   addInteraction(state, name, interaction) {

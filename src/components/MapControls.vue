@@ -67,7 +67,7 @@ export default {
       layer.setVisible(self.visible[layer.get('title')])
     })
     this.map.on('moveend', function (event) {
-      console.log('moveend')
+      // console.log('moveend')
       store.commit('view/setView', {
         zoom: event.map.getView().getZoom(),
         center: event.map.getView().getCenter()

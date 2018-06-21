@@ -114,15 +114,10 @@ export const defaultStyle = {
 }
 
 const styleFunction = function (feature, resolution) {
-  console.error('styleFunction')
-  console.log(feature)
-  console.log(resolution)
   const featureStyleFunction = feature.getStyleFunction()
   if (featureStyleFunction) {
-    console.log('call featureStyleFunction')
     return featureStyleFunction.call(feature, resolution)
   } else {
-    console.log('call default style for ', feature.getGeometry().getType())
     return defaultStyle[feature.getGeometry().getType()]
   }
 }

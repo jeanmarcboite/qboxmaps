@@ -39,7 +39,6 @@ export default {
     }
   },
   mounted: function() {
-    console.log('TrackSwitcher mounted')
     this.$refs.input.onchange = readFiles({
       map: this.map,
       tracks: this.map.tracks,
