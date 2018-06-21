@@ -59,7 +59,7 @@ const mutations = {
     delete state.tracks[track.id]
   },
   clear(state, tracks) {
-    Object.assign(state.tracks, {})
+    state.tracks = {}
   }
 }
 

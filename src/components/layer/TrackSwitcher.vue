@@ -2,14 +2,19 @@
 
 <div class="ol-unselectable ol-control ol-trackswitcher" @contextmenu="updateTrackList($event)">
   <q-context-menu>
-    <div>
+    <div v-if="tracks.length == 0">
+      <b>No track available</b>
+    </div>
+    <div v-else>
     <q-btn>Tracks</q-btn>
-         <q-btn push round color="amber" text-color="black" @click="ondelete">
-   <q-icon name="delete" />
-  </q-btn>
-  </div>
-  <TrackList ref='trackList' @update="updateTrackList"/>
+    <q-btn push round color="amber" text-color="black" @click="ondelete">
+      <q-icon name="delete" />
+    </q-btn>
+    </div>
+    
+    <TrackList ref='trackList' @update="updateTrackList"/>
   </q-context-menu>
+  
   <input type="file" ref="input" accept=".gpx" multiple style="display: none;" />
   <q-btn push small round @click="handleClick">
     <q-icon name="directions_walk" style="font-size: 1em;" />
