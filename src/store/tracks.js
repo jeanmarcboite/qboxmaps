@@ -55,7 +55,7 @@ const mutations = {
   storeTrack(state, track) {
     storeTrack(state, track)
   },
-  deleteTrack(state, track) {
+  delete(state, track) {
     delete state.tracks[track.id]
   },
   clear(state, tracks) {
