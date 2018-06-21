@@ -2,7 +2,7 @@
 <div>
   <LayerSwitcher/>
   <TrackSwitcher :tracks="tracks()" />
-  <Draw/>
+  <Draw v-if="false"/>
 </div>
 </template>
 
@@ -53,18 +53,21 @@ export default {
     geocoder.on('addresschosen', function (event) {
       console.dir(event)
       event.target.map_.getView().setCenter(event.coordinate)
+      store.commit('OL/setCenter', {center: event.coordinate})
+      // store.commit('view/setCenter', {center: event.coordinate})
     })
 
-    store.commit('OL/addControl', ['map', geocoder])
-    store.commit('OL/addControl', ['map', new Fullscreen()])
-    this.map.addControl(new Scaleline())
-    this.map.addControl(new OverviewMap())
-    this.map.addControl(new Geolocator())
+    store.commit('OL/addControl', {control: geocoder})
+    store.commit('OL/addControl', {control: new Fullscreen()})
+    store.commit('OL/addControl', {control: new Scaleline()})
+    store.commit('OL/addControl', {control: new OverviewMap()})
+    store.commit('OL/addControl', {control: new Geolocator()})
 
     listLayers(this.map).forEach(function (layer) {
       layer.setVisible(self.visible[layer.get('title')])
     })
     this.map.on('moveend', function (event) {
+      console.log('moveend')
       store.commit('view/setView', {
         zoom: event.map.getView().getZoom(),
         center: event.map.getView().getCenter()

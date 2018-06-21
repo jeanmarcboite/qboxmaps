@@ -3,7 +3,15 @@ import view from './view'
 import View from 'ol/view'
 
 const state = {
+  defaultMap: 'map',
   map: null
+}
+
+const getName = function (state, options) {
+  if (options && options.name) {
+    return options.name
+  }
+  return state.defaultMap
 }
 
 const mutations = {
@@ -12,12 +20,16 @@ const mutations = {
     options.view = new View(view.state)
     state[options.name] = new Map(options)
   },
-  setTarget(state, name) {
-    console.log('setTarget ' + name)
-    state[name].setTarget(name)
+  setTarget(state, options) {
+    console.log('setTarget ' + getName(state, options))
+    state[getName(state, options)].setTarget(options.target)
   },
-  addControl(state, name, control) {
-    state[name].addControl(control)
+  setCenter(state, options) {
+    state[getName(state, options)].getView().setCenter(options.center)
+  },
+  addControl(state, options) {
+    console.log('addControl ' + name)
+    state[getName(state, options)].addControl(options.control)
   },
   addInteraction(state, name, interaction) {
     state[name].addInteraction(interaction)

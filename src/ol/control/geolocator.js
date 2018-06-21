@@ -3,6 +3,7 @@ import Control from 'ol/control/control'
 import {
   poi
 } from 'src/ol/poi'
+import store from 'src/store'
 
 /**
  * @typedef {Object} Options
@@ -19,7 +20,7 @@ import {
  * @param  {[type]} optOptions [description]
  * @return {[type]}            [description]
  */
-const Geolocator = function(optOptions) {
+const Geolocator = function (optOptions) {
   if (process.env.NODE_ENV !== 'production' && !(this instanceof Geolocator)) {
     console.warn('Geolocator is a constructor and should be called with the `new` keyword')
   }
@@ -50,19 +51,20 @@ const Geolocator = function(optOptions) {
 
 ol.inherits(Geolocator, Control)
 
-const setCenter = function(position) {
-      console.log('Pos: ' + position.coords.longitude)
-      console.log('Pos: ' + position.coords.latitude)
-      window.map.getView().setCenter(poi(position.coords.longitude, position.coords.latitude))
+const setCenter = function (position) {
+  const center = poi(position.coords.longitude, position.coords.latitude)
+  store.commit('OL/setCenter', {
+    center
+  })
 }
-const error = function(err) {
+const error = function (err) {
   console.warn(`ERROR(${err.code}): ${err.message}`)
 }
 /**
  * @param {Event} event The event to handle
  * @private
  */
-Geolocator.prototype.handleClick_ = function(event) {
+Geolocator.prototype.handleClick_ = function (event) {
   event.preventDefault()
   if ('geolocation' in navigator) {
     console.log('/* geolocation is available */')

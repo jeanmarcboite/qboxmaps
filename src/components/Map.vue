@@ -36,7 +36,7 @@ export default {
   },
   mounted: function () {
     // this.map.setTarget('map')
-   this.$store.commit('OL/setTarget', 'map')
+   this.$store.commit('OL/setTarget', {target: 'map'})
   }
 }
 </script>

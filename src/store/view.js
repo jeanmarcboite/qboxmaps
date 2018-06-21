@@ -1,13 +1,14 @@
 import POI from 'src/ol/poi'
-import { make } from 'vuex-pathify'
+import {
+  make
+} from 'vuex-pathify'
 
 const state = {
   zoom: 16,
   center: POI.Faycelles,
   trackColor: '#0000ff'
 }
-const actions = {
-}
+const actions = {}
 
 const getters = {
   defaultColor: state => state.trackColor,
@@ -20,6 +21,9 @@ const mutations = {
     state.zoom = value.zoom
     state.center = value.center
   },
+  setCenter(state, value) {
+    state.center = value.center
+  }
 }
 
 export default {
