@@ -44,10 +44,6 @@ export default {
         })
       
         const modify = new Modify({source: source})
-        this.$store.commit('OL/addInteraction', {
-          name: this.target, 
-          interaction: modify
-          })
 
         const draw = new Draw({
           source: source,
@@ -59,7 +55,7 @@ export default {
 
         for (let interaction in [modify, draw, snap]) {
           this.$store.commit('OL/addInteracton', {
-            name: this.target,
+            target: this.target,
             interaction
           })
         }
@@ -71,7 +67,7 @@ export default {
         })
 
           this.$store.commit('OL/pushTrack', {
-            name: this.target,
+            target: this.target,
             track
           })
         
@@ -80,14 +76,14 @@ export default {
           event.preventDefault()
           this.drawing = false
            this.$store.commit('OL/storeTrack', {
-            name: this.target,
+            target: this.target,
             track
           })
        })
          modify.on('modifyend', (event) => {
           console.log('modifyend')
           this.$store.commit('OL/storeTrack', {
-            name: this.target,
+            target: this.target,
             track
           })
         })

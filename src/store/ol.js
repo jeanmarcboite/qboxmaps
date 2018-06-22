@@ -3,15 +3,15 @@ import view from './view'
 import View from 'ol/view'
 
 const state = {
-  defaultMap: 'map',
+  defaultTarget: 'map',
   map: null
 }
 
-const getName = function (state, options) {
-  if (options && options.name) {
-    return options.name
+const getTarget = function (state, options) {
+  if (options && options.target) {
+    return options.target
   }
-  return state.defaultMap
+  return state.defaultTarget
 }
 
 const mutations = {
@@ -20,24 +20,27 @@ const mutations = {
     const target = options.target
     delete options.target
     state[target] = new Map(options)
+    if (!state.defaultTarget) {
+      state.defaultTarget = target
+    }
   },
   setTarget(state, options) {
     state[options.target].setTarget(options.target)
   },
   setCenter(state, options) {
-    state[getName(state, options)].getView().setCenter(options.center)
+    state[getTarget(state, options)].getView().setCenter(options.center)
   },
   addControl(state, options) {
-    state[getName(state, options)].addControl(options.control)
+    state[getTarget(state, options)].addControl(options.control)
   },
   addInteraction(state, options) {
-    state[getName(state, options)].addInteraction(options.interaction)
+    state[getTarget(state, options)].addInteraction(options.interaction)
   },
   removeInteraction(state, options) {
-    state[getName(state, options)].removeInteraction(options.interaction)
+    state[getTarget(state, options)].removeInteraction(options.interaction)
   },
   pushTrack(state, options) {
-    state[getName(state, options)].tracks.getLayers().push(options.track)
+    state[getTarget(state, options)].tracks.getLayers().push(options.track)
   }
 }
 
