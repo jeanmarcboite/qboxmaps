@@ -29,83 +29,88 @@
 </template>
 
 <script>
-  import {
-    sync
-  } from 'vuex-pathify'
+import { sync } from 'vuex-pathify'
 
-  export default {
-    props: [
-      'track'
-    ],
+export default {
+    props: {
+        target: {
+            default: 'map',
+            type: String
+        },
+        track: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
-      return {
-        color: this.track.color,
-        width: this.track.width,
-        visible: true,
-        title: this.track.get('title'),
-        tags: this.track.tags,
-      }
+        return {
+            color: this.track.color,
+            width: this.track.width,
+            visible: true,
+            title: this.track.get('title'),
+            tags: this.track.tags
+        }
     },
     watch: {
-      visible: function(val) {
-        this.track.setVisible(val)
-        // console.log('track: ' + this.track.get('title') + ((this.track.getVisible()) ? ' visible' : ''))
-      },
-      title: function(val) {
-        this.track.setName(val)
-      }
+        visible: function(val) {
+            this.track.setVisible(val)
+            // console.log('track: ' + this.track.get('title') + ((this.track.getVisible()) ? ' visible' : ''))
+        },
+        title: function(val) {
+            this.track.setName(val)
+        }
     },
     computed: {
-      ...sync('tracks', ['tagList']),
-      ...sync('OL', ['map']),
-      tagMap: function() {
-        return this.tagList.map(label => {
-          return {
-            label
-          }
-        })
-      },
+        ...sync('tracks', ['tagList']),
+        ...sync('OL', ['map']),
+        tagMap: function() {
+            return this.tagList.map(label => {
+                return {
+                    label
+                }
+            })
+        }
     },
     mounted: function() {
-      const track = this.track
-      const map = this.map
+        const track = this.track
+        const map = this.map
 
-      this.$refs.trackTitle.$el.addEventListener('click', function() {
-        if (track.extent) {
-          map.getView().fit(track.extent)
-        }
-      })
+        this.$refs.trackTitle.$el.addEventListener('click', function() {
+            if (track.extent) {
+                map.getView().fit(track.extent)
+            }
+        })
     },
     methods: {
-      colorInput: function(color) {
-        this.track.setColor(color)
-      },
-      widthInput: function(width) {
-        this.track.setWidth(width)
-      },
-      onhide: function() {
-        this.shown = false
-      },
-      oninput: function(model) {
-        this.tags.forEach(tag => {
-          if (!this.tagList.includes(tag)) {
-            this.tagList.push(tag)
-          }
-        })
-        this.track.tags = this.tags
-        this.$store.commit('tracks/storeTrack', this.track)
-      },
-      onedit: function() {
-        console.log('edit')
-        console.dir(this.track.source)
-      },
-      ondelete: function() {
-        this.map.tracks.delete(this.track)
-        this.$emit('delete')
-      },
-       duplicate(label) {
-        this.$q.notify(`"${label}" already in list`)
-      }
+        colorInput: function(color) {
+            this.track.setColor(color)
+        },
+        widthInput: function(width) {
+            this.track.setWidth(width)
+        },
+        onhide: function() {
+            this.shown = false
+        },
+        oninput: function(model) {
+            this.tags.forEach(tag => {
+                if (!this.tagList.includes(tag)) {
+                    this.tagList.push(tag)
+                }
+            })
+            this.track.tags = this.tags
+            this.$store.commit('tracks/storeTrack', this)
+        },
+        onedit: function() {
+            console.log('edit')
+            console.dir(this.track.source)
+        },
+        ondelete: function() {
+            this.map.tracks.delete(this.track)
+            this.$emit('delete')
+        },
+        duplicate(label) {
+            this.$q.notify(`"${label}" already in list`)
+        }
     }
-  }
+}
 </script>

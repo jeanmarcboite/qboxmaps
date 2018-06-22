@@ -29,7 +29,7 @@ export default {
   methods: {},
   created: function () {
     this.$store.commit('OL/newMap', { 
-      target: 'map',
+      target: this.target,
       tracks: this.$store.state.tracks.tracks
     })
   },
