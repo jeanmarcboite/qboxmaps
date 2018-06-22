@@ -25,7 +25,7 @@ const mutations = {
     }
   },
   setTarget(state, options) {
-    state[options.target].setTarget(options.target)
+    state[getTarget(state, options)].setTarget(getTarget(state, options))
   },
   setCenter(state, options) {
     state[getTarget(state, options)].getView().setCenter(options.center)

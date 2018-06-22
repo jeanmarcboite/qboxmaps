@@ -28,6 +28,12 @@ export default {
     TrackSwitcher,
     Draw
   },
+  props: {
+    'target': {
+      default: 'map',
+      type: String
+    }
+  },
   computed: {
     ...sync('layers', ['visible']),
     ...sync('OL', ['map'])
@@ -53,22 +59,36 @@ export default {
     geocoder.on('addresschosen', function (event) {
       console.dir(event)
       event.target.map_.getView().setCenter(event.coordinate)
-      store.commit('OL/setCenter', {center: event.coordinate})
-      // store.commit('view/setCenter', {center: event.coordinate})
+      store.commit('OL/setCenter', {
+        target: this.target,
+          center: event.coordinate
+      })
+    })
+    store.commit('OL/addControl', {
+      target: this.target,
+      control: geocoder
     })
 
-    store.commit('OL/addControl', {control: geocoder})
-    store.commit('OL/addControl', {control: new Fullscreen()})
-    store.commit('OL/addControl', {control: new Scaleline()})
-    store.commit('OL/addControl', {control: new OverviewMap()})
-    store.commit('OL/addControl', {control: new Geolocator()})
-
+  const controls = [
+    new Fullscreen(),
+    new Scaleline(),
+    new OverviewMap(),
+    new Geolocator()
+    ]
+  
+  for (let c = 0; c < controls.length; c++) {
+      store.commit('OL/addControl', {
+        target: this.target,
+        control: controls[c]
+      })
+    }
     listLayers(this.map).forEach(function (layer) {
       layer.setVisible(self.visible[layer.get('title')])
     })
     this.map.on('moveend', function (event) {
       // console.log('moveend')
       store.commit('view/setView', {
+        target: this.target,
         zoom: event.map.getView().getZoom(),
         center: event.map.getView().getCenter()
       })
