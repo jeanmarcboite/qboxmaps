@@ -26,6 +26,12 @@ export default {
       drawing: false
     }
   },
+  props: {
+    'target': {
+      default: 'map',
+      type: String
+    }
+  },
   methods: {
     handleClick: function () {
       this.drawing = !this.drawing
@@ -38,7 +44,10 @@ export default {
         })
       
         const modify = new Modify({source: source})
-        this.$store.commit('OL/addInteraction', 'map', modify)
+        this.$store.commit('OL/addInteraction', {
+          name: this.target, 
+          interaction: modify
+          })
 
         const draw = new Draw({
           source: source,
@@ -47,9 +56,13 @@ export default {
         })
         
         const snap = new Snap({source: source})
-        
-        this.$store.commit('OL/addInteraction', 'map', draw)
-        this.$store.commit('OL/addInteraction', 'map', snap)
+
+        for (let interaction in [modify, draw, snap]) {
+          this.$store.commit('OL/addInteracton', {
+            name: this.target,
+            interaction
+          })
+        }
         
         const track = new Track({
           title: 'New Track',
@@ -57,17 +70,26 @@ export default {
           style: drawStyle
         })
 
-        this.$store.commit('OL/pushTrack', 'map', track)
+          this.$store.commit('OL/pushTrack', {
+            name: this.target,
+            track
+          })
         
         draw.on('drawend', (event) => {
           console.log('drawend')
           event.preventDefault()
           this.drawing = false
-          this.$store.commit('tracks/storeTrack', track)
+           this.$store.commit('OL/storeTrack', {
+            name: this.target,
+            track
+          })
        })
          modify.on('modifyend', (event) => {
           console.log('modifyend')
-          this.$store.commit('tracks/storeTrack', track)
+          this.$store.commit('OL/storeTrack', {
+            name: this.target,
+            track
+          })
         })
       }
     }

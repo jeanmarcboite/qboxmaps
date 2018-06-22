@@ -28,14 +28,14 @@ const mutations = {
   addControl(state, options) {
     state[getName(state, options)].addControl(options.control)
   },
-  addInteraction(state, name, interaction) {
-    state[name].addInteraction(interaction)
+  addInteraction(state, options) {
+    state[getName(state, options)].addInteraction(options.interaction)
   },
-  removeInteraction(state, name, interaction) {
-    state[name].removeInteraction(interaction)
+  removeInteraction(state, options) {
+    state[getName(state, options)].removeInteraction(options.interaction)
   },
-  pushTrack(state, name, track) {
-    state[name].tracks.getLayers().push(track)
+  pushTrack(state, options) {
+    state[getName(state, options)].tracks.getLayers().push(options.track)
   }
 }
 
