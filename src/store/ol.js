@@ -22,7 +22,7 @@ const mutations = {
     state[target] = new Map(options)
   },
   setTarget(state, options) {
-    state['map'].setTarget('map')
+    state[options.target].setTarget(options.target)
   },
   setCenter(state, options) {
     state[getName(state, options)].getView().setCenter(options.center)
