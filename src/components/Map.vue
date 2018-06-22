@@ -36,6 +36,9 @@ export default {
   mounted: function () {
     // this.map.setTarget('map')
    this.$store.commit('OL/setTarget', this)
+    this.map.on('click', event => {
+      this.layerSwitcherOpen = false
+    })
   }
 }
 </script>
