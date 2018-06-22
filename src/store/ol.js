@@ -17,7 +17,9 @@ const getName = function (state, options) {
 const mutations = {
   newMap(state, options) {
     options.view = new View(view.state)
-    state[options.name] = new Map(options)
+    const target = options.target
+    delete options.target
+    state[target] = new Map(options)
   },
   setTarget(state, options) {
     state['map'].setTarget('map')
