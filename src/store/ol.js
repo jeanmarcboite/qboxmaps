@@ -3,7 +3,7 @@ import view from './view'
 import View from 'ol/view'
 
 const state = {
-  defaultTarget: 'map',
+  defaultTarget: undefined,
   map: null
 }
 
